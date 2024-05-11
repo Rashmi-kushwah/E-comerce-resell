@@ -1,0 +1,312 @@
+{% include 'header.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+<style>
+
+
+#profile {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: slideInUp 0.5s ease forwards;
+}
+
+#profile img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+
+  transition: transform 0.3s ease;
+}
+
+#profile img:hover {
+  transform: scale(1.1);
+}
+
+.user-details {
+margin-top: 20px;
+}
+* Navigation Section */
+.sec-nav {
+  background-color: rgb(252, 162, 52);
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #232f3e;
+}
+
+.ord-sup {
+  display: inline-block;
+  margin: 0 20px;
+
+}
+
+.ord-sup a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.ord-sup p {
+  margin: 0;
+}
+
+.sup_odr {
+  font-size: 0.8em;
+  background-color: red;
+  padding: 3px 4px;
+  border-radius: 50%;
+width: 24px;
+height:25px;
+border-radius: 50%;
+right: -13px; 
+margin-top: -10px;
+}
+.text{
+  font-weight: 300;
+ font-size: 16px;
+  color: white;
+  margin-top: 5px;
+  text-align: center;
+
+
+}
+
+.sec-nav {
+        width: 100%;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center;
+        height: auto; /* Adjust height or remove fixed height */
+        padding:10px; /* Adjust padding */
+      text-align: center;
+       
+        /* background-color: rgb(255,215,0); */
+      }
+
+    p {
+        /* Adjust styles for links in the secondary navigation */
+        margin: 5px 0; /* Adjust margins */
+        font-size: 18px; /* Modify font size */
+        color: white; /* Text color */
+        text-align: center; /* Center align text */
+        padding: 5px; /* Add padding */
+      }  
+ 
+
+/* Animation Keyframes */
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media only screen and (max-width: 768px) {
+  #profile img {
+    width: 150px; /* Example: Choti image ke liye width kam kiya gaya hai */
+    height: auto; /* Example: Height ko auto set kiya gaya hai */
+  }
+
+  .user-details {
+    font-size: 14px; /* Example: User details ka font size kam kiya gaya hai */
+  }
+
+  .sec-nav {
+    padding: 10px; /* Example: Padding ko kam kiya gaya hai */
+  }
+
+  .ord-sup {
+    margin: 10px; /* Example: Margin ko kam kiya gaya hai */
+  }
+
+  p {
+    font-size: 14px; /* Example: Links ke font size ko kam kiya gaya hai */
+  }
+}
+/* Add this CSS to your existing styles */
+
+.edit-icon {
+    position: relative;
+    top: -20px; /* Adjust the position as needed */
+    right: -150px; /* Adjust the position as needed */
+    cursor: pointer;
+    color: #888;
+    font-size: 20px;
+}
+
+.edit-section {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+}
+
+ input {
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+ button {
+  margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sec-nav1 {
+ 
+  padding: 7px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right, #ffbb00, #ffff00);
+}
+
+.sec-nav1 a{
+  text-decoration: none;
+  
+ 
+}
+h6{
+  color:rgb(75, 74, 74);
+  font-size: 23px;
+  
+}
+.sec-nav a:hover {
+  text-decoration: underline;
+}
+
+</style> 
+
+<html>
+<body>
+  <div>
+    <main>  
+         {% for u in user_data %}
+        
+        <section id="profile">
+        <!-- <img src="{{ u.profile_image_url }}" alt="User Profile Image">--> 
+            <img src="https://thumbs.dreamstime.com/b/icon-profile-circle-not-shadow-color-dark-blue-icon-profile-circle-not-shadow-color-dark-blue-background-194699290.jpg" alt="">
+            
+            <div class="user-details">
+                <h3 id="username">Hello,{{ u.Name }}</h3>
+                <p style="color: black;"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email: {{ u.email }}</p>
+                <p style="color: black; font-size: 17px;" ><i class="fa fa-mobile" aria-hidden="true"></i> Contact No: {{ u.phone_number }}</p>
+                <!-- Add more user details as needed -->
+                <i class="ri-pencil-line"    onclick="toggleEdit()"style="  position: relative;
+             
+              top: -125px; 
+              right: -120px;
+              cursor: pointer;
+              color: grey ;
+              font-size: 22px;"></i>
+           
+                <div id="edit-name" style="display: none;">
+                    <input type="text" id="new-name" value="{{ u.Name }}">
+                    <button onclick="saveName()" style="   background-color: rgb(255,215,0);">Continue</button>
+                    <button onclick="cancelEdit()"style="green">Cancel</button>
+                </div>
+        </section>
+      
+
+        {% endfor %}
+    </main>
+    </div>
+
+  <br>
+   
+
+  <br>
+ 
+    <div class="sec-nav1">
+    
+      <a href="/reseller/mypayments/" ><h6>my payments: </h6></a>
+    </div>
+  
+
+<nav>
+  
+  <div class="sec-nav" style="  background-color: #154360;">
+
+    <div class="ord-sup">
+      <a href="/reseller/all_orders/" style="text-decoration: none; ">
+        <p><span class="delivery-icon" style="font-size: 20px;">📦</span> All orders</p>
+        <sup class="sup_odr"><p class="text">{{ total_order_count }}</p>  </sup></a>
+    </div>
+
+    <div class="ord-sup">
+      <a href="/reseller/new_orders/" style="text-decoration: none;">
+        <p><span class="shipped-icon" style="font-size: 20px;">📦</span>New Orders</p>
+       
+               
+        <sup class="sup_odr"><p class="text"> {{ new_order_count }}</p> </sup></a>
+    </div> 
+    
+    <div class="ord-sup">
+      <a href="/reseller/shipped_orders/" style="text-decoration: none;">
+        <p><span class="shipped-icon" style="font-size: 23px;">🚚</span> Shipped Orders</p>
+        <sup class="sup_odr"><p class="text"> {{ shipped_order_count }}</p> </sup></a>
+    </div>
+
+    <div class="ord-sup">
+      <a href="/reseller/delivered_orders/" style="text-decoration: none;">
+        <p><span class="delivery-icon" style="font-size: 20px;">📦</span> Deliver orders</p>
+
+        <sup class="sup_odr"><p class="text"> {{ delivered_order_count }} </p></sup></a>
+    </div>
+    <div class="ord-sup">    
+      <a href="/reseller/cancel_orders/" style="text-decoration: none;">
+        <p><span class="cancel-icon" style="font-size: 20px;">📦</span> Return orders</p>
+
+        <sup class="sup_odr"> <p class="text">{{ canceled_order_count }} </p></sup></a>
+    </div> 
+    <div class="ord-sup">    
+      <a href="/reseller/cancel_orders/" style="text-decoration: none;">
+        <p><span class="cancel-icon">❌</span> Cancel orders</p>
+
+        <sup class="sup_odr"> <p class="text">{{ canceled_order_count }} </p></sup></a>
+    </div> 
+    
+  </div>
+</nav>  
+
+<script>
+  function toggleEdit() {
+      var editSection = document.getElementById("edit-name");
+      editSection.style.display = "block";
+      var username = document.getElementById("username");
+      username.style.display = "none";
+  }
+
+  function saveName() {
+      var newName = document.getElementById("new-name").value;
+      var username = document.getElementById("username");
+      username.innerText = newName;
+      username.style.display = "block";
+      var editSection = document.getElementById("edit-name");
+      editSection.style.display = "none";
+  }
+
+  function cancelEdit() {
+      var editSection = document.getElementById("edit-name");
+      editSection.style.display = "none";
+      var username = document.getElementById("username");
+      username.style.display = "block";
+  }
+</script>
+</body>
+</html>
+{% include 'footer.html' %}

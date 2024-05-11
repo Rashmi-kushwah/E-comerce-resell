@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  YouTube Clone</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+       
+ 
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    
+}
+h1{
+    font-size: 1.5rem;
+}
+h4{
+    font-size: .9rem;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-left: 20px;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.menu-icon {
+
+    
+    cursor: pointer;
+}
+i{
+    font-size: 1.5rem;
+    color: #fff;
+
+}
+hr{
+    border: 1px solid rgba(255,255,255,0.1);
+}
+/*---------------------header start---------------*/
+.header{
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #202022;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+    position: sticky;
+   
+    z-index: 10;
+}
+
+.logo-img{
+    position: relative;
+    height: 40px;
+    width: 40px;
+
+
+}
+.logo-img img{
+    position: absolute;
+    top: 0;
+     left: -50px; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+ 
+   
+}
+#logo-txt{
+    letter-spacing: -3.5px;
+    color: #fff;
+    margin-left: 0;
+   
+}
+    .sidebar.small-sidebar {
+    overflow-y: hidden;
+}
+.logo{
+    display: flex;
+    align-items: center;
+  margin-left: 5px;
+  
+}
+.logo-container{
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.middle-section {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+
+    position: relative;
+    
+}
+
+.search-bar {
+    background: #030303; 
+    width: 600px;
+    padding: 10px 40px 10px 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-left: 40px;
+}
+
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+   
+    transform: translateY(-50%);
+    background-color: rgb(58, 57, 57);
+    color: #fff;
+    border: none;
+    padding: 10px 10px 10px;
+    width: 60px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    cursor: pointer;
+  
+}
+
+.microphone-icon i{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(73, 71, 71);
+    border-radius: 50%;
+    margin-left: 15px;
+    padding-top: 8px;
+  text-align: center;
+
+}
+.microphone-icon i:hover{
+    background-color: rgb(61, 59, 59);
+}
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.icon {
+ 
+    margin-left: 5px;
+}
+
+.video-icon {
+    background-image: url('video_icon.png');
+    background-size: cover;
+}
+
+.notification-icon {
+   
+    background-size: cover;
+}
+
+
+.profile-icon img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: cover;
+    margin-right: 20px;
+}
+
+.count {
+    position: absolute;
+    top: 10px; 
+    right: 7.5%; 
+    background-color: rgb(211, 7, 7);
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*################### sidebar##############*/
+
+.sidebar{
+     background: #242323; 
+    width: 17%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding-left: 2%;
+    padding-top: 80px;
+    overflow-y: auto;
+    
+
+}
+.sidebar{
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.3);
+}
+
+.sidebar p{
+    color: white;
+}
+.sidebar hr{
+    background-color: #636161;
+    border: 0;
+    height: 1px;
+    width: 100%;
+}
+.shortcut-links a img{
+    width: 20px;
+    margin-right: 20px;
+
+}
+
+.shortcut-links a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+    text-decoration: none;
+  
+ 
+}
+
+.subscribed-list h3{
+    font-size: 16px;
+    margin: 20px 0;
+    color: white;
+
+}
+
+.subscribed-list  a {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: fit-content;
+    flex-wrap: wrap;
+    text-decoration: none;
+    color: black;
+ 
+ 
+}
+.subscribed-list a img{
+    width: 25px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 20px;
+    
+}
+.small-sidebar{
+    width: 5%;
+}
+.small-sidebar a p{
+    display: none;
+}
+.small-sidebar h3{
+    display: none;
+}
+.small-sidebar hr{
+    width: 50%;
+    margin-bottom: 25px;
+}
+/*------------------content ----------------------*/
+.content{
+    width: calc(100vw-240px);
+
+}
+.chips-wrapper{
+
+    overflow-x: scroll;
+    background-color: #181818;
+    display: flex;
+    padding: 2px;
+    padding-left: 8%;
+    border-top: 1px solid rgba(255, 255, 255,0.1);
+    border-bottom:1px solid rgba(255, 255, 255,0.1);
+}
+
+.chips-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(70, 69, 69, 0.7) rgba(0, 0, 0, 0.3);
+}
+
+
+.chips-wrapper::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.chip{
+    max-width: 12px 6px;
+    background-color: #373737;
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255,0.1);
+    border-radius: 16px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #fff;
+    transition: 0.5s;
+    margin-right: 5px;
+}
+.chip:hover{
+    background-color: #4d4d4d;
+}
+/*-----------------------main------------------------*/
+main {
+    background: #242323; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+.container{
+    width: 100%;
+   background: #242323;  
+    padding-left: 17%;
+    padding-right: 2%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}
+.large-container{
+    padding-left: 7%;
+}
+.list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top: 15px;
+    position: relative;
+}
+.video-list {
+    max-width: 100%; 
+
+  
+}
+.video-info{
+    color: white;
+    
+   
+    font-size: 14px;
+}
+.video-info a{
+  
+    color: white;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+margin-bottom: 5px;
+    display: block;
+    margin-left: 40px;
+   
+  
+}
+.video-info p{
+    margin-bottom: 5px;
+    color: grey;
+    margin-left: 40px;
+  
+}
+.list-container {
+    grid-auto-rows: auto; 
+}
+
+.video-list .thumbnail{
+    width: 100%;
+    border-radius: 3%;
+  
+  
+}
+.video-list .thumbnail:hover{
+    border-radius: 0%;
+    
+}
+
+
+.video-list .flex-div{
+    align-items:flex-start;
+    margin-top: 5px;
+    position: relative;
+  
+  
+}  
+.video-list .flex-div img{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+   
+    
+
+   
+}
+@media only screen and (max-width: 768px) {
+   
+    .menu-icon{
+        display: none;
+    } 
+    .sidebar{
+        display: none;
+    }
+    
+    .chips-wrapper{
+        width: 100%;
+        padding-left: 2%;
+    }
+    .search-bar{
+
+        display: none;
+    }
+     
+    .search-button{
+        background-color: #202022;
+    }
+    .search-button i{
+        font-size: 1.2rem;
+    }
+    .count{
+   margin-right: 20%;
+    } 
+   
+    .microphone-icon{
+        display: none;
+    }
+    .icon_video-icon{
+        display: none;
+
+    }
+    .icon_notification-icon{
+        display: block;
+    }
+   
+    .container {
+        flex-direction: column; 
+        padding-left: 0%;
+        padding-right: 0%;
+      
+       
+        
+    }
+    .list-container{
+        flex-direction: column;
+     
+        
+    } 
+    .video-list{
+        width: 100%;
+        flex-direction: column;
+    }
+    
+}
+
+</style>
+
+ 
+</head>
+<body>
+    
+        <div class="header">
+            <div class="logo-container">
+                <div class="menu-icon">
+                <i class="ri-menu-fill"></i>
+            </div>
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png"  width="60px" height="40px" style="margin-left: 50px; mix-blend-mode:hard-light; margin-bottom: 5px;" alt="YouTube Logo" class="logo">
+   
+                        
+                    </div>
+                    <h2 id="logo-txt">YouTube</h2>
+                        <sup style="color: rgb(153, 149, 149); margin-top: -13px;">IN</sup>
+                </div>
+            </div>
+
+            <div class="middle-section">
+                <div class="search-container">
+                    <input type="text" placeholder="Search" class="search-bar">
+                    <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+                <div class=" microphone-icon">
+                    <i class="fa fa-microphone" aria-hidden="true" style="margin-right: 120px; align-items: center; font-size: 25px;"></i>
+                    
+            </div>
+               
+           
+     <div class="nav-right">
+           
+            </div>
+            
+            <div class="icon_video-icon">
+                <i class="ri-video-add-line" style="margin-right: 20px; font-size: 25px;" ></i>
+                
+                </div>
+            
+                <div class="icon_notification-icon"><i class="fa fa-bell-o" aria-hidden="true" style="margin-right: 40px; font-size: 20px;"></i></div>
+                <div class="count">5</div>
+            <div class="profile-icon">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj" alt="">
+            </div> 
+        </div>
+        </div>
+    
+        
+    <!---------------sidebar---------------------->
+    <div class="sidebar">
+        <div class="shortcut-links">
+            <a href=""><img src="https://yt3.googleusercontent.com/mpzY-WIWZamVZmv3n69tvagwHvHnSq6ldJVLR3GmOtRhvx-bEboJFz3BdLlVm4vvDHGJIPJmqw=s900-c-k-c0x00ffffff-no-rj"  width="24px" height="22px" style="color: white;  " alt=""></i><p>Home</p></a>
+            <a href=""><img src="https://seeklogo.com/images/Y/youtube-shorts-logo-E2BF31FE28-seeklogo.com.png" width="20px" height="20px" alt=""></i><p>Shorts</p></a>
+            <a href=""><img src="https://cdn.iconscout.com/icon/free/png-256/free-subscription-6823320-5582702.png"  width="20px" height="20px" alt=""></i><p>Subscription</p></a>
+            <br>
+            <hr>
+            <br>
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqKQAl9B0QZ2YDX4-DNdBHmC3WPWMvxfbUCtAyY_J0GVL42o-zz39erGp4KFj6aPRmUr4&usqp=CAU"  width="20px" height="20px" alt=""></i><p>History</p></a>
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXSqV9dtHfZiBvBw7FfTuF5yhFW90cimWyNxfHgnNUowyipSkQKYz26dIanfUglMaW-dk&usqp=CAU"   width="20px" height="20px" alt=""></i><p>Playlist</p></a>
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiFPjJg5cO7hRnre9KSwqbgdQ7nwe46PpVoHr-IK2Cvwm8njfnYLXmbWy7zvNe54tQepI&usqp=CAUs"  width="21px" height="21px color:black;"  alt=""></i><p>Watch later</p></a>
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdpdXUhQgCGal1L3VcnHcDYFLVdBHpIDbV-e0U5eDkiGqF6sKGlReD_5u2cwFh5vtS2zE&usqp=CAU"  width="21px" height="21px color:black;"  alt=""></i><p>Liked videos</p></a>
+
+        </div>
+        <hr>
+        <br>
+        <div class="subscribed-list">
+            <h3>SUBSCRIBED</h3>
+            <a href=""><img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>Rashmi</p></a>
+            <a href=""><img src="https://yt3.googleusercontent.com/7GnBmiEGgQlQiVDPFDR7Nd5T5UeEs30j3g7Glztco0rL9AY5o9KgmRyOcJP3VHYfU8yZcj9wDw=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p> Newton School</p></a>
+            
+            <a href=""><img src="https://yt3.googleusercontent.com/hmfHSFLWHXTqNETNIdEleIxve81y2IJWQ5Xx9blt9goMp6h1Vs8O1dfOoICb94QfbWJKwyqv3vU=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>WsCube Tech </p></a>
+            
+            <a href=""><img src="https://yt3.googleusercontent.com/yTrkoUatFFWSgQgZEKwBMBsyI8sZFarM24EXS0gzShmTgOAZdkMkzUy1EN8s0luL-EK7RAEReQ=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>Easy Tutorials</p></a>
+            
+            <a href=""><img src=" https://yt3.googleusercontent.com/00yIYVKjmFvR7sFZXmP5aMq1u0P7ZcLfnDW27A7zRD1hTqcWLwYn0-o_5rGkK2eKfCf43ueE7Q=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>Apna College  </p></a>
+
+            <a href=""><img src="https://yt3.googleusercontent.com/dZrWJVS5N3R5R-qkneimoPXYLBC-apFge8e8q94jrMur7bLPc7PaOO1fiwPJrVfsando6fP2=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>GreatStack</p></a>
+            
+            <a href=""><img src="https://yt3.googleusercontent.com/ytc/AIdro_nNX6rUlrIP219TLUIg8X2-FyjQTww5-Jvi_7Ljbz5Lgu8=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>Feel Free To Code</p></a>
+            
+            <a href=""><img src="https://yt3.googleusercontent.com/n_Ur_6pHqLby4vecnjOJzQQO_IZ9VvNYRmcl9TGN0m8y4itVWC3PFSexiLQ-TGT6xoAcC4wu=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px"  alt=""><p>Learning Axis</p></a>
+           
+            
+            
+           
+        </div>
+        <hr>
+        <div class="subscribed-list">
+            <h3>More From YouTube</h3>
+            <a href=""><img src="https://image.similarpng.com/very-thumbnail/2020/12/Most-popular-icon-Youtube-premium-vector-PNG.png"  width="45px" height="45px"  alt=""><p>YouTube Premium</p></a>
+            
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfKGd4dIAxjJ8Rrps0XyEovebF4PNHR6HgQcNwPRFsqA&s"  width="45px" height="45px"  alt=""><p> YouTube music</p></a>
+            
+            <a href=""><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPPbXFm-inSbUdNwgeKbDvfhDg_qQhPD_6X5cl0Do5KQ&s"  width="45px" height="45px"  alt=""><p>kids youtube  </p></a>
+           
+            </div>
+            
+    </div>
+    <div class="content">
+        <div class="chips-wrapper">
+            <div class="chip">
+                <p>All</p>
+            </div>
+            <div class="chip">
+                <p>HTML</p>
+            </div>
+            <div class="chip">
+                <p>CSS</p>
+            </div>
+            <div class="chip">
+                <p>Responsive</p>
+            </div>
+
+            <div class="chip">
+                <p>Javascript</p>
+            </div><div class="chip">
+                <p>Python</p>
+            </div>
+            <div class="chip">
+                <p>UI/UX</p>
+            </div>
+            <div class="chip">
+                <p>HTML</p>
+            </div>
+            <div class="chip">
+                <p>CSS</p>
+            </div>
+            <div class="chip">
+                <p>Responsive</p>
+            </div>
+
+            <div class="chip">
+                <p>Javascript</p>
+            </div><div class="chip">
+                <p>Python</p>
+            </div>
+            <div class="chip">
+                <p>UI/UX</p>
+            </div>
+            <div class="chip">
+                <p>CSS</p>
+            </div>
+            <div class="chip">
+                <p>Responsive</p>
+            </div>
+
+            <div class="chip">
+                <p>Javascript</p>
+            </div><div class="chip">
+                <p>Python</p>
+            </div>
+            <div class="chip">
+                <p>UI/UX</p>
+            </div>
+          
+
+
+        </div>
+   
+    </div>
+    
+    <main>
+        <div class="container">
+          
+            <div class="list-container">
+               
+                <div class="video-list">
+                    <a href="you tube clone 2.html"> <img src="https://i.ytimg.com/vi/Ez8F0nW6S-w/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgAkk4iMExxaUaQLsm7cY0TRtgLg" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/00yIYVKjmFvR7sFZXmP5aMq1u0P7ZcLfnDW27A7zRD1hTqcWLwYn0-o_5rGkK2eKfCf43ueE7Q=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">4 Years of Coding in 4 Minutes - A Short Movie</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+               
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/_50cOAxxg8o/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCb-a3FzGDTWh8cOJR4GW2SLt48MQ" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/0wZKdSXUBg6nXsmpcGVJSbbeoGglfI35PhSJJDEaJ3WrjOb4UwGhEydxhu4O70cu6H7lEIVxfw=s68-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Best channel to learn coding that help to be a web developer</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/0U4SGrqh2Wk/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDTOTZkO_H2-OrZ_9JJH_ql6KjufQ" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/dNgwojMk007Jrb8RlULUw2VO0WJ5iP1HtKclpSSEqiVIqT0ecwFwdEvWibqppm2D6WxtaMVTaZM=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Jay Shree Krishna Bolo Jay Radhey (( Mayapuris }}</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+            
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/9h9SC34tNNU/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARg5IE0ocjAP&rs=AOn4CLCBc3f9OWXfG4IVzkzMknebj1vYAA" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/RrMHCGQZlx80NtwnIY4tfJJUU7pV-8fqgQO5J-Ry44mcizDzNnz3d1EIYiNBviVDKxrCSwb2tg=s88-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Which one is better for YOU ? Delta 4.0 vs Sigma 2.0 | Starting 15th Feb | QnA Session</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/FKVf1E78Wb8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAnL86pocFHPIewQ8G73fFIWyil7g" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/sq5rm1ghog5nfzTN0zeUaeXxc2PtB3KvKG2AJpyGN_O0ZPxwUoOS0Y5y1AkbMT1_LTHXMJ94MA=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">
+                               
+                                C Language Tutorial for Beginners (with Notes & Practice Questions)</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/hzZCRykyfiQ/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBekwxZAKY4xNOdow3EEpp6h96pUA" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/ITxBwV38pQKSYhjdbpBd9bs6L7cVvleUrCC7YLc_2MCVWuPEuG4tnbZEa1nKdeDoSz4eHQ8Dew=s88-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Best channel to learn coding that help to be a web developer</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/Feoea8FQTI0/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDlM0iZiQLLSAnnShYVMA6juaeCOw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/J0j-krtHcE7wYWOixiaJUil9VAwyg0CEu8wa_4PMjRyt2g2EVEs_aMZJmbJKtDgja2KgR_eYnQ=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">
+                                Tum Prem Ho || radhakrishna song  new best cople radhekrishna tum prem ho tum preet ho song</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/BBKtZsBTWTI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC2G_x50d37zVna6yb2S3BkKMIMLg" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/ytc/AIdro_l5GtkK4klAQVfQABMV6ksKkySt5lYmcDTuDNevXoR-vYM=s48-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">करुणामयी कृपा कीजिये श्री राधे | Karunamayi Kripa Kijie | Chitra Vichitra Ji @SaawariyaMusic</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/GuuOVv0C02I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBDs0IB5EzkHiABcIdGvWK_-b_smw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Best channel to learn coding that help to be a web developer</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/HFX6AZ5bDDo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAFjeL90P9nKXdq7Tq5XXZeuOIyew" alt="" class="thumbnail"></a>
+                    
+                    <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/5ozNNrQBUJY8TPt2BYo6fEL-07ilkWHVedWCGFjtvuHU0aYrg1Iop-LJvprodA1_9-MTv7G_YA=s48-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Namo Namo - Full Video | Kedarnath | Sushant Rajput | Sara Ali Khan | Amit Trivedi | Amitabh B</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/LrnMVuKGu3Q/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDB7TArxhcw7Jeuv18BWiT5C1Xfdw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Best channel to learn coding that help to be a web developer</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/_CWcBWSKItk/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC5tS8PkrT6kY8m8R5HB2lGWdoKbw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/ytc/AIdro_ngMHY1lzfSmGH3Cm7fC7LQz-TcjuTsEILMWhhmIE6o6w=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Radha Ramanam Hare Hare - Shri Indresh Upadhyay Ji | #BhaktipathAnthem</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                
+               
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/hIYbhnbpkM0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAkzy1XvrEljrOHiBz5uyIxSqoScg" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/yTrkoUatFFWSgQgZEKwBMBsyI8sZFarM24EXS0gzShmTgOAZdkMkzUy1EN8s0luL-EK7RAEReQ=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Contact Page Design Using HTML And CSS | Contact Form With Tilt Image Hover Effect</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/sHrdNuN8wDY/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA30eREw4pflaBId2PUtPzvTlh0pw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/of5Iss7bGlO9kGBsbZoQJ7t_80KkJqTMdQtF581yZwTyA5Eym-1DoH9Gr5bohb1X6uUVoo1E6XY=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">22. Add Unique Slug in Django - Generate Slugs in Django | Django Tutorial 2023</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/64N1nNk0WuQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD-D5utHQm3ecVFWScqdecV6Q1wyw" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/00yIYVKjmFvR7sFZXmP5aMq1u0P7ZcLfnDW27A7zRD1hTqcWLwYn0-o_5rGkK2eKfCf43ueE7Q=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">
+
+                                How I would Code if I get back in 1st year of College? Software Development Placement | RoadMap</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/TZ1uOYVCNoE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAN_aeBG4bKky9H1lsRSS4l3ddRCg" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/YNtXOYyOxDlVaYicGQ3DTcnAqbFaZ3EwpTpxjF20aWZ8-UBntKrMsyUoApzx8UGPI7IKmh7fEA=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">
+                              
+                                Meri kismat bana dijiye shri radhe | देके चरणों की सेवा मुझे श्री राधे मेरी किस्मत बना दिजिए |</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/eQ3wRkEU5bE/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD9emSei-ePNLfgvaO_sgVyG2xnnQ" alt="" class="thumbnail"></a>
+                     <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/vNkIGmOyzYuEGMThBpv2GxyIXLi_aFmg43AgcYnwgeNss9uzbMgCdGGRllaVP2yaixQyjJ6pxuA=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href=""> तेरी बांकी अदा ने ओ सावरें मुझे तेरा दीवाना बना दिया || Teri Banki Ada Ne O Sanware </a></a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="video-list">
+                    <a href="Video-play.html"> <img src="https://i.ytimg.com/vi/nZc2Xs3eUjc/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCksEQ_kvB8onODlvpYjZCvNza7zA" alt="" class="thumbnail"></a>
+                    
+                    <div class="flex-div">
+                         <img src="https://yt3.googleusercontent.com/7GnBmiEGgQlQiVDPFDR7Nd5T5UeEs30j3g7Glztco0rL9AY5o9KgmRyOcJP3VHYfU8yZcj9wDw=s176-c-k-c0x00ffffff-no-rj"  width="45px" height="45px" alt="">
+                         <div class="video-info">
+                             <a href="">Best channel to learn coding that help to be a web developer</a>
+                             <p>Description of the video</p>
+                             <p>15k Views &bull; 2 days</p>
+                         </div>
+                     </div>
+                 </div>
+                 
+                 
+            </div>
+        </div>
+    
+    </main>
+
+    <script>
+        var menuIcon = document.querySelector(".menu-icon");
+        var sideBar = document.querySelector(".sidebar");
+        var container = document.querySelector(".container");
+
+menuIcon.onclick = function() {
+    sideBar.classList.toggle("small-sidebar");
+    container.classList.toggle("large-container");
+};
+
+    </script>      
+</body>
+</html>

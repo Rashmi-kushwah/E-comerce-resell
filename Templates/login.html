@@ -1,0 +1,370 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width , intial-scale=1.0 , maximum-scale=1.0 , user-scalable=no">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-compatible" content="Ie-edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+        
+        <title>login page</title>
+       
+      
+
+        <style>
+            *{
+    
+            margin: 0;
+                padding: 0;
+            }
+            .body{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .logo{
+                height: 240px;
+                width: 75px;
+                
+              
+            }
+            .main{
+               
+              display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+                padding-top: 30px;
+                background-color: #f5fdf5;
+                display: flex;
+            
+        
+            }
+           
+            .container{
+                outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+                width: 450px;
+                height:auto;
+             padding: 12px;
+                background-color: #fff;
+                display: flex;
+                flex-direction:column;
+                align-items: center;
+                border: none;
+                border-radius: 3%;
+                margin-top: 5px;
+                gap: 15px;
+            }
+            .login{
+               
+                font-size: 1.2rem;
+                margin: 20px 0 10px 0;
+                font-size: 25px;
+            }
+            .email {
+     position: relative; /* set relative position for icon positioning */
+
+    background: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 0 15px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    }
+    .email i {
+        position: absolute;
+        left: 23px; /* Adjust the left position of the icon */
+        top: 40%; /* Center the icon vertically */
+        transform: translateY(-50%);
+        color: #3d3c3c; /* Adjust the color of the icon */
+        z-index: 1; /* Ensure the icon stays above the input */
+    }
+    .password input {
+
+background: transparent;
+outline: none;
+border: 0;
+padding-left: 30px; 
+ }
+.email input {
+
+     background: transparent;
+    outline: none;
+    border: 0;
+    padding-left: 30px; 
+        }
+        .email-box{
+flex-basis: 100%;
+display: flex;
+align-items: center;
+justify-content: center; /* centering horizontally */
+
+}
+.email,.password{
+width: 350px;
+height: 43px;
+background: #fff;
+display: flex;
+align-items: center;
+border-radius: 20px;
+padding: 0 15px;
+margin-bottom: 18px;
+box-sizing: border-box;
+}
+
+input {
+    width: 80%;
+    height: 50px;
+    margin-bottom: 10px; /* Add margin to the bottom of input boxes */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 15px;
+    padding-left: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+}
+
+            .checkbox-container {
+            display: flex;
+            
+            margin-bottom: 10px;
+        }
+        .checkbox-container p {
+            color: #585555;
+           margin-right: 250px;
+            margin-left: 5px; /* Adjust the space between checkbox and text */
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 18px; /* Adjust the width as needed */
+            height: 18px;
+          
+        }
+         
+            button{
+                width: 85%;
+                height: 50px;
+                border-radius: 5px;
+                border: none;
+            
+                background-image: linear-gradient(to right, #ff00ff, #ffff00);
+                font-size:24px;
+                font-weight: bold;
+                color: white;
+            }
+            
+            a{
+                margin: 10px;
+                font-size: 14px;
+                text-decoration: none;
+                color: blue;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            
+          
+            .login-button:hover{
+                background-image: linear-gradient(to right, #ff00ff, #00ffff);
+            
+            }
+           
+            .style{
+                position: relative;
+                text-align: center;
+                font-size: 12px;
+                color: black;
+                display: block;
+            }
+            .style::before{
+                content: "";
+                display: block;
+                height: 0.9px;
+                width: 170px;
+                position: absolute;
+                left: 20px;
+                top: 20px;
+                background-color: rgba(0,0, 0,0.2);
+            }
+            
+            .style::after{
+                content: "";
+                display: block;
+                height: 0.9px;
+                width: 170px;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                background-color: rgba(0,0, 0,0.2);
+            }
+            
+           
+          
+           
+            
+            .msg {
+                text-align: center;
+                font-size: 20px;
+             
+
+            }
+  
+
+            #whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    
+  }
+  @keyframes iconPopup {
+    0% {
+        transform: scale(0); /* Start with the icon scaled down to 0 size */
+        opacity: 0; /* Initially hidden */
+    }
+    50% {
+        transform: scale(1.2); /* Scale up the icon to 1.2 times its original size */
+        opacity: 1; /* Make the icon fully visible */
+    }
+    100% {
+        transform: scale(1); /* Scale back to its original size */
+        opacity: 0; /* Fade out the icon */
+    }
+}
+
+#whatsapp-icon img, #call-icon img {
+    animation: iconPopup 5s ease infinite; /* Apply the animation */
+}
+
+  #whatsapp-icon img:hover {
+    transform: scale(1.1); /* Increases the size of the icon slightly on hover */
+}
+
+  #whatsapp-icon img {
+    width: 48px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Adds a smooth transition effect */
+  }
+ 
+  #call-icon {
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+    z-index: 999;
+}
+
+#call-icon img {
+  width: 48px; /* Adjust size as needed */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Adds a smooth transition effect */
+}
+
+#call-icon img:hover {
+    transform: scale(1.1); /* Increases the size of the icon slightly on hover */
+}
+
+@media screen and (max-width: 600px) {
+  /* Mobile device ke liye CSS properties */
+  .container {
+    width: 96%; /* Container ki width ko kam kar dijiye */
+    padding: 10px; /* Container ki padding ko kam kar dijiye */
+  }
+
+  .email input {
+    width: 80%; /* Input field ki width ko kam kar dijiye */
+  }
+  .checkbox-container {
+           margin-left: 10px;
+        }
+        .checkbox-container {
+            display: flex;
+            
+            margin-bottom: 10px;
+        }
+        .checkbox-container p {
+           font-size: 10px;
+            margin-left: 10px; /* Adjust the space between checkbox and text */
+        }
+        .checkbox-container input[type="checkbox"] {
+            width: 18px; /* Adjust the width as needed */
+            height: 18px;
+            margin-left: 20px;
+          
+        }
+
+  /* Aur bhi required CSS properties add kijiye */
+}
+
+        </style>
+     
+        
+    </head>
+    <body>
+        <div class="main">
+           <!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe7A987fReP8ryWhuohDwXKlAkL1e7roGpZScOB5UNsupbsvAqPBTfqu_PyTp08eWOyg&usqp=CAU" width="240px" height="80px" style="mix-blend-mode:darken; "  alt=""><!--mix-blend-mode: color-burn;object-fit: contain;aspect-ratio: 1/1;-->
+            
+           {% if error %}
+           <div class="msg">
+               <h4>{{ error }}</h4>
+           </div>
+           {% endif %}
+
+            <form method="POST" action="" >
+                {% csrf_token %}
+                <div class="container">
+                    <h4><span class="login">Log In </span></h4>
+                 
+                    <input type="email" id="email" name="email" placeholder="please enter your email">
+                
+                  
+                    <input type="password" id="passwordField" name="password" placeholder="please enter your password ">
+                   
+                    <div class="checkbox-container">
+                        <input type="checkbox" onclick="showPassword()"> 
+                        <p>Show Password</p> 
+                    </div>
+                    <button class="login-button">Login</button>
+            </form> 
+                    <div class="style">or</div> <br>
+
+                    <h4>Do not have acoount</h4>
+                    
+                    <a href='/reseller/register/'><h4>Register</h4></a>
+                    
+                </div>
+            
+            
+        </div>
+      
+    </body>
+    <div id="call-icon">
+        <a href="tel:8193036931">
+          <a href="https://wa.me/8193036931?text=hi" target="_blank"></a>
+
+
+            <img src="https://cdn-icons-png.flaticon.com/256/7044/7044732.png" alt="Call">
+        </a>
+    </div>
+    <div id="whatsapp-icon">
+        <a href="https://wa.me/8193036931?text=hi" target="_blank">
+          <img src="https://cdn.pixabay.com/photo/2015/08/03/13/58/whatsapp-873316_1280.png" alt="WhatsApp">
+        </a>
+      </div>
+      <script>
+        function showPassword() {
+            var passwordField = document.getElementById("passwordField");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</html>

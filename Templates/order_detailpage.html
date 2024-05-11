@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            width: 100%;
+    margin-bottom: 10px; 
+
+   
+
+    color: black;
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid grey;
+    flex: 1;
+    font-family: Arial, sans-serif;
+   
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+        .container1 {
+            width: 100%;
+    margin-bottom: 10px; 
+          
+   
+
+    color: black;
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid grey;
+    flex: 1;
+    font-family: Arial, sans-serif;
+   
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.container2 {
+            width: 100%;
+    margin-bottom: 10px; 
+            height: 270px;
+   
+
+    color: black;
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid grey;
+    flex: 1;
+    font-family: Arial, sans-serif;
+   
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+h2{
+    color: black;
+}
+ul{
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(255,215,0);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+           width: 100%;
+        }
+       .container h2{
+            color: green;
+            text-align: center;
+            font-weight: 700;
+        }
+        .order-container {
+            width: 100%;
+         
+            margin-bottom: 10px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            border: 1px solid ;
+            border-radius: 5px;
+            outline-style: none;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+             
+        }
+        h2{
+            font-weight: 500;
+
+        }
+        h3{
+            font-weight: 600;
+        }
+        .remove-button {
+            width: fit-content;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            float: right; /* Align the button to the left */
+            margin-right: 10px; /* Add margin to separate the button from order details */
+           
+        }
+    </style>
+</head>
+
+<body>
+   
+
+    <div class="container">
+       
+        <h2> {% if error %}
+            <div class="msg">
+                <h4>{{ error }}</h4>
+            </div>
+            {% endif %}</h2>
+    </div>
+   
+    <!-- <div class="container1">
+      
+        </div> -->
+        {% for order in orders %}
+        <div class="container2">
+                <!-- Order details here -->
+                
+                <!-- <p>Order ID: {{ order.order_id }}</p>
+                <p>Order Date: {{ order.order_date }}</p> -->
+
+                <h3><i class="fa fa-map-marker" aria-hidden="true" style="color: blue; font-size: 28px; "></i>  Delivery Address</h3>
+                <p>Customer name: {{ order.name }}</p>
+                <p>contact No:{{ order.phone_number }}</p>
+                {{ order.address }}
+                {{ order.pincode }}
+                {{ order.landmark }}
+                {{ order.state }}
+                {{ order.total_qty}}
+                {{ order.total_amount}}
+
+                <!-- order_detailpage.html -->
+               
+        </div>
+        {% endfor %}
+    </div>
+         
+   
+
+    <div class="container">
+        <a href="/reseller/homepage/" style="text-decoration: none;"> <button style="text-decoration: none; font-size: 23px; color: #0056b3;" >Continue Shopping</button></a><br>
+    </div>
+</body>
+
+</html>

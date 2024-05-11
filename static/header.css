@@ -1,0 +1,143 @@
+  /*----header----*/
+  header {
+    background-color: #fff;
+    color: #fff;
+    padding: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(241, 232, 232);
+}
+
+header img {
+    width: 140px;
+    height: 40px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    width: 390px;
+    height: 40px;
+    outline: none;
+    border: 1px solid rgb(201, 197, 197);
+    font-size: 20px;
+    text-align: left;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.search button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    box-shadow: 0 4px 6px 0 rgb(0, 0, 0, 0, 0.12);
+    background-color: #fb641b;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: -5px;
+}
+
+header svg {
+    margin-inline: 30px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.Icon {
+    display: flex;
+}
+
+.sec-nav {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(252, 162, 52);
+    border-left: none;
+    border-right: none;
+    padding: 15px;
+    font-weight: 550;
+    height: auto;
+    background-color: rgb(255, 215, 0);
+}
+
+.imgg {
+    margin-top: 5px;
+    margin-right: 8px;
+    margin-left: 8px;
+    display: flex;
+    animation: slideAnimation 15s infinite;
+}
+
+.imgg img {
+    height: 400px;
+    width: 1320px;
+}
+
+.Cart {
+    position: relative;
+    display: inline-block;
+}
+
+.ord-sup {
+    position: relative;
+    display: inline-block;
+}
+
+.sup_odr {
+    position: absolute;
+    right: 18px;
+    font-size: 20px;
+    bottom: 12px;
+    color: white;
+    background-color: red;
+    border-radius: 60px;
+    width: 22px;
+    height: 23px;
+    margin-inline: block;
+    padding: 2px;
+    text-align: center;
+    font-weight: 350;
+    margin-top: 10px;
+}
+
+.sup_cart {
+    position: absolute;
+    right: 17px;
+    font-size: 21px;
+    color: white;
+    background-color: red;
+    border-radius: 60px;
+    width: 24px;
+    height: 25px;
+    margin-inline: block;
+    padding: 1px;
+    text-align: center;
+    margin-left: 20px;
+    font-weight: 250;
+}
+
+.sup_cart p {
+    margin-top: 9px;
+}
+
+/* Media Query for Responsive Header */
+@media (max-width: 767.98px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .search {
+        margin-top: 10px;
+    }
+
+    .Icon {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+  rel="stylesheet"/>>
+  <title>Page Title</title>
+    <head>
+        <title></title>
+        <style>
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+     background: #030303;  
+    /* background-color: rgb(48, 46, 46); */
+}
+
+
+h1{
+    font-size: 1.5rem;
+}
+h4{
+    font-size: .9rem;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-left: 20px;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+.menu-icon {
+
+    
+    cursor: pointer;
+}
+i{
+    font-size: 1.5rem;
+    color: #fff;
+
+}
+hr{
+    border: 1px solid rgba(255,255,255,0.1);
+}
+/*---------------------header start---------------*/
+.header{
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: #202022; */
+    /* background: #030303;  */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    /* background-color: rgb(48, 46, 46); */
+    /* background-color: rgb(58, 57, 57); */
+    color: #fff;
+    position: sticky;
+   
+    z-index: 10;
+}
+
+.logo-img{
+    position: relative;
+    height: 40px;
+    width: 40px;
+
+
+}
+.logo-img img{
+    position: absolute;
+    top: 0;
+     left: -50px; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+ 
+   
+}
+#logo-txt{
+    letter-spacing: -3.5px;
+    color: #fff;
+    margin-left: 0;
+   
+}
+    .sidebar.small-sidebar {
+    overflow-y: hidden;
+}
+.logo{
+    display: flex;
+    align-items: center;
+  margin-left: 10px;
+  
+}
+.logo-container{
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.middle-section {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    /* background: #030303;  */
+    position: relative;
+    
+}
+
+.search-bar {
+    /* background: #030303;  */
+    width: 600px;
+    padding: 10px 40px 10px 10px; /* Right padding for the icon */
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin-left: 40px;
+}
+
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+   
+    transform: translateY(-50%);
+    background-color: rgb(58, 57, 57);
+    color: #fff;
+    border: none;
+    padding: 10px 10px 10px;
+    width: 60px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    cursor: pointer;
+  
+}
+
+.microphone-icon i{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(73, 71, 71);
+    border-radius: 50%;
+    margin-left: 15px;
+    padding-top: 8px;
+  text-align: center;
+
+}
+.microphone-icon i:hover{
+    background-color: rgb(61, 59, 59);
+}
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.icon {
+ 
+    margin-left: 5px;
+}
+
+.video-icon {
+    background-image: url('video_icon.png');
+    background-size: cover;
+}
+
+.notification-icon {
+   
+    background-size: cover;
+}
+
+
+.profile-icon img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-size: cover;
+    margin-right: 20px;
+}
+
+.count {
+    position: absolute;
+    top: 10px; /* Yaha pe apne icon ke upar ki jagah set karein */
+    right: 7.5%; /* Yaha pe apne icon ke right ki jagah set karein */
+    background-color: rgb(211, 7, 7);
+    color: white;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+   
+    .menu-icon{
+        display: none;
+    } 
+    .sidebar{
+        display: none;
+    }
+   
+    .chips-wrapper{
+        width: 100%;
+        padding-left: 2%;
+    }
+    .search-bar{
+        /* width: 150px; 
+        text-align: center; */
+        display: none;
+    }
+     
+    .search-button{
+      background: #030303;  
+    }
+    .search-button i{
+        font-size: 20px;
+    }
+    .container, .large-container{
+        width: 100%;
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+     .count{
+   margin-right: 20%;
+    } 
+   
+    .microphone-icon{
+        display: none;
+    }
+    .icon_video-icon{
+        display: none;
+
+    }
+    .icon_notification-icon{
+        display: block;
+    }
+   
+}
+
+/*----------------video-container--------------*/
+.container{
+
+  padding-left: 2%;
+}
+.row{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.play-video{
+  flex-basis: 69%;
+ 
+}
+.play-video video{
+ width: 100%;
+}
+.right-sidebar{
+  flex-basis: 30%;
+  
+}       
+.side-video-list{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.side-video-list img{
+    width: 100%;
+}
+.small-thumbnail{
+  flex-basis: 49%;
+}
+.video-info{
+  flex-basis: 49%;
+  
+}
+.video-info a{
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+}
+.video-info p{
+ font-size: 13px;
+ color:#b9b7b7;
+ margin-top: 2px;
+}
+.tags{
+  color: white;
+  font-size: 13px;
+margin-top: 20px;
+}
+.tags a{
+  color: blue;
+  font-size: 16px;
+
+}
+.play-video h3{
+  font-weight: 600;
+  margin-top: 10px;
+}
+.play-video .play-video-info{
+  display: flex;
+  align-items: center;
+  justify-content:flex-end;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  color: #5a5a5a;
+}
+.play-video .play-video-info  i{
+  width: 20px;
+  margin-right: 8px;
+
+}
+.play-video .play-video-info span {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 15px;
+}
+ hr{
+  border: 0;
+  height: 1px;
+  background-color:#ccc;
+  margin: 10px 0;
+}
+.publisher{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.publisher div{
+  flex: 1;
+ line-height: 18px;
+}
+.publisher  img{
+  width: 40px;
+border-radius: 50%;
+margin-left: 15px;
+
+}
+.publisher div p{
+  color: #000;
+  font-weight: 600;
+  font-size: 18px;
+}
+.publisher div span{
+  font-size: 13px;
+  color: #faf3f3;
+}
+.publisher button{
+  background-color: red;
+  color: #fff;
+  padding: 15px 30px;
+  border: 0;
+  outline: 0;
+  border-radius: 40px;
+  cursor: pointer;
+}
+.video-description{
+  padding-left: 55px;
+  margin: 15px 0;
+
+ 
+}
+.video-description p{
+  font-size: 14px;
+  color: #faf3f3;
+}
+.add-comments{
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+}
+.add-comments img{
+  width: 35px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.add-comments input{
+  border: 0;
+  outline: none;
+  border-bottom: 1px solid #f5f3f3;
+  width: 100%;
+  padding-top: 10px;
+  background: transparent;
+}
+.old-comment{
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.old-comment img{
+  width: 35px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.old-comment img h3 {
+  font-size: 14px;
+  margin-bottom: 2px;
+
+ 
+}
+.old-comment img  span{
+  font-size: 12px;
+  color: #faf3f3;
+  font-weight: 500;
+  margin-left: 8px;
+}
+.comment-section{
+  display: flex;
+
+align-items: center;
+margin: 8px 0;
+font-size: 14px;
+}
+.comment-section i{
+  border-radius: 0;
+  width: 30px;
+  margin-right: 5px;
+}
+.comment-section span{
+  margin-right: 20px;
+  color: #5a5a5a;
+  font-weight: 500;
+}
+.comment-section span a{
+  color: #0000ff;
+}
+
+
+
+
+/* Styling for Share button */
+.fa-share {
+    font-size: 20px;
+    color: white;
+}
+
+.like-button{
+  color: white;
+}
+.unlike-button{
+  color: white;
+
+}
+.share-button{
+  color: white;
+}
+h3{
+  color: white;
+
+}
+.share-button:hover {
+    background-color: #333; /* Change color on hover as desired */
+}
+/* Add this media query at the end of your CSS */
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    .row {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .play-video {
+        width: 100%;
+    }
+
+    .right-sidebar {
+    flex-direction: column;
+  }
+  .side-video-list {
+    flex-direction: column;
+    margin-bottom: 10px;
+    
+      
+  }
+   
+    .side-video-list:nth-child(even) {
+        flex-direction: column; /* Align even numbered videos in a column */
+    }
+
+    .small-thumbnail {
+        flex-basis: 100%; /* Make each video take full width */
+        margin-bottom: 10px;
+    }
+
+   
+
+    .add-comments,
+    .old-comment,
+    .comment-section {
+        display: block; /* Show comments and comment section */
+    }
+    .video-info a{
+      font-size: 16px;
+      font-weight: 300;
+    }
+    .video-info p{
+      font-size: 15px;
+      
+    }
+}
+
+
+
+</style> 
+    
+    </head>
+    <body>
+      
+      <div class="header">
+        <div class="logo-container">
+            <div class="menu-icon">
+            <i class="ri-menu-fill"></i>
+        </div>
+            <div class="logo">
+                <div class="logo-img">
+                    <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-06-512.png"  width="60px" height="40px" style="margin-left: 50px; mix-blend-mode:hard-light; margin-bottom: 5px;" alt="YouTube Logo" class="logo">
+
+                    
+                </div>
+                <h2 id="logo-txt">YouTube</h2>
+                    <sup style="color: rgb(153, 149, 149); margin-top: -13px;">IN</sup>
+            </div>
+        </div>
+
+        <div class="middle-section">
+            <div class="search-container">
+                <input type="text" placeholder="Search" class="search-bar">
+                <button class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+            <div class=" microphone-icon">
+                <i class="fa fa-microphone" aria-hidden="true" style="margin-right: 120px; align-items: center; font-size: 25px;"></i>
+                
+        </div>
+           
+       
+    <div class="nav-right">
+       
+        </div>
+        
+        <div class="icon_video-icon">
+            <i class="ri-video-add-line" style="margin-right: 20px; font-size: 25px;" ></i>
+            
+            </div>
+        
+            <div class="icon_notification-icon"><i class="fa fa-bell-o" aria-hidden="true" style="margin-right: 40px; font-size: 20px;"></i></div>
+            <div class="count">5</div>
+        <div class="profile-icon">
+            <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj" alt="">
+        </div>
+    </div>
+    </div>
+
+    <div class="container ">
+      <div class="row">
+            <div class="play-video">
+              <video src="c:\Users\rashm\Downloads\How to make Notes for Coding_ Data Structures & Algorithms (1).mp4" type="video/mp4" controls autoplay></video>
+              
+              <!-- <video  controls autoplay></video>
+              <source src="c:\Users\rashm\Downloads\video.webm" type="video/mp4" >
+              -->
+             
+              <div class="tags">
+                  <a href="">#coding</a>
+                  <a href="">#HTML</a>
+                  <a href="">#CSS</a> 
+                  <a href="">#Python</a>
+      
+              </div>
+           
+                  <h3>Best Youtube Channel for Web Development</h3>
+                  <div class="play-video-info">
+                    <!--<p>1225 Views &bull; 2 days ago</p>-->
+              
+                    <span class="like-button"><i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 30px; color: white;"></i>125</span>
+                    <span class="unlike-button"><i class="fa fa-thumbs-o-down" aria-hidden="true" style="font-size: 30px; color: white;"></i>2</span>
+                    <span class="share-button"><i class="fa fa-share" aria-hidden="true"></i>Share</span>
+                    
+                   
+              </div>
+              <hr>
+              <div class="publisher">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj"  width="40px" height="40px" alt="">
+                <div>
+                <p>Easy tutorials</p>
+                <span>500k Subscribers</span>
+              </div>
+              <button type="button">Subscribe</button>
+            </div>
+              <div class="video-description">
+                <p style=" color:#faf3f3;">channel that makes learning easy</p>
+                <p  style=" color:#faf3f3;">Subscribe  Easy Tutorial to watch more tutorials on  wev development</p>
+              </div>
+              <hr>
+              <h3>134 comments</h3>
+              <div class="add-comments">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_lXNBnVor2T5FVc9Go-w378cXn6JmX-YLkW1G6mVZyFzwgLjg01XTaBOrjvCuKmfuRq9g=s88-c-k-c0x00ffffff-no-rj"  width="40px" height="40px" alt="">
+                <input type="text" placeholder="write comments.....">
+              </div>
+              <div class="old-comment">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_mxwZ4148OTGpW105pxEAX-Rd7R516Om_nZW2Xdm5sXQQ=s88-c-k-c0x00ffffff-no-rj"  width="40px" height="40px" alt="">
+              </div>
+              <h3 style="  font-size: 14px;
+              margin-bottom: 2px;color :#faf3f3;">@Agam_<span style=" font-size: 12px;
+                color: #5a5a5a;
+                font-weight: 500;
+                margin-left: 8px;">2 days </span></h3>
+              <p  style=" color:#faf3f3;">Main is bhajan ko 100 baar se jyada sun chuka hoon ..uske baad bhi man nahi bharta .. bus sunta rahu baar baar ❤️ ❤️.. </p>
+                <div class="comment-section">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 20px;"></i>
+                  <span>244</span>
+                <i class="fa fa-thumbs-o-down" aria-hidden="true"  style="font-size: 20px;"></i>
+                <span>2</span>
+                <span>REPLY</span>
+                <a href="" style="color:#0000ff ; ">All Reply</a>
+                </div>
+                <div class="old-comment">
+                  <img src="https://yt3.ggpht.com/ytc/AIdro_mxwZ4148OTGpW105pxEAX-Rd7R516Om_nZW2Xdm5sXQQ=s88-c-k-c0x00ffffff-no-rj"  width="40px" height="40px" alt="">
+                </div>
+                <h3 style="  font-size: 14px;
+                margin-bottom: 2px;color :#faf3f3;">@Agam_
+                <span style=" font-size: 12px;
+                color: #5a5a5a;
+                font-weight: 500;
+                margin-left: 8px;">2 days </span> </h3> 
+                <p  style=" color:#faf3f3;">Main is bhajan ko 100 baar se jyada sun chuka hoon ..uske baad bhi man nahi bharta .. bus sunta rahu baar baar ❤️❤️ .. </p>
+                  <div class="comment-section">
+                    <i class="fa fa-thumbs-o-up" aria-hidden="true" style="font-size: 20px;"></i>
+                    <span>244</span>
+                  <i class="fa fa-thumbs-o-down" aria-hidden="true"  style="font-size: 20px;"></i>
+                  <span>2</span>
+                  <span>REPLY</span>
+                  <a href="" style="color:#0000ff ; ">All Reply</a>
+                  </div>
+            </div>
+        
+         
+          
+          
+         
+          <div class="right-sidebar">
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/Ez8F0nW6S-w/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgAkk4iMExxaUaQLsm7cY0TRtgLg" alt=""></a>
+              <div class="video-info">
+                <a href=""> C Language Tutorial for Beginners (with Notes & Practice Questions) </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/Feoea8FQTI0/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLDlM0iZiQLLSAnnShYVMA6juaeCOw" alt=""></a>
+              <div class="video-info">
+                <a href="">Tum Prem Ho || radhakrishna song  new best cople radhekrishna tum prem ho tum preet ho song </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/BBKtZsBTWTI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC2G_x50d37zVna6yb2S3BkKMIMLg" alt=""></a>
+              <div class="video-info">
+                <a href="">करुणामयी कृपा कीजिये श्री राधे | Karunamayi Kripa Kijie | Chitra Vichitra Ji @SaawariyaMusic </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/MWbVpDlTx_k/hqdefault.jpg?sqp=-oaymwEXCOADEI4CSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBTfRZWB0mH2Zxn-VWKW9IXgfm9Xg" alt=""></a>
+              <div class="video-info">
+                <a href="">FULL BHAJAN : मुरली कि धुन | MURLI KI DHUN | Vrindavan Ko Aaya Hun | Nikhil Verma | Kshl Music </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/jdpTR_hJupA/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDiFNJ1y7xyoypSAmOcbvLVKLFw1A" alt=""></a>
+              <div class="video-info">
+                <a href="">How to make Responsive Pricing Table Template Using HTML and CSS only | Price List</a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/HBD4UwccG8g/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCYElszTmCe03ugjrI4tFKHH9Z2Yg" alt=""></a>
+              <div class="video-info">
+                <a href="">ll Shri Hari Stotram l Jagajjalam Palam ll Most Powerful mantra Of Lord Vishnu ll 🔥🔥</a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/Gj-jQKrXhDA/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAyrHQqNTu5UdPilNO2nJ0LVV9cBw" alt=""></a>
+              <div class="video-info">
+                <a href="">A day in the life of a Microsoft Intern in India </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/37Aiwud-Jks/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCwzJPk49ThdHDdzx0YNAUCuS6DUQ" alt=""></a>
+              <div class="video-info">
+                <a href="">How I would Code if I can get back in First Year of College? Software Development Placement</a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+            <div class="side-video-list">
+              <a href="" class="small-thumbnail"><img src="https://i.ytimg.com/vi/Ez8F0nW6S-w/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBgAkk4iMExxaUaQLsm7cY0TRtgLg" alt=""></a>
+              <div class="video-info">
+                <a href="">Best Channel taht help you to be a web developer </a>
+                <p>Easy tutorials</p>
+                <p>15k Views</p>
+              </div>
+            </div>
+
+          </div>
+          
+      </div>
+  </div>
+    </body>
+</html>

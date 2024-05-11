@@ -1,0 +1,159 @@
+
+{% include 'header.html' %}    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Orders</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.product-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.product {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.order-icon {
+    font-size: 48px;
+    color: #000;
+}
+.order-icon img{
+  width: 70px;
+  height: 60px;
+}
+
+/* .product-details {
+  
+} */
+
+@media screen and (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.add-to-cart-btn,
+.buy-now-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  
+}
+
+.add-to-cart-btn {
+  background-color: #f8140c;
+  border: none;
+}
+
+.buy-now-btn {
+  background-color: #27ae60;
+  border: none;
+  margin-top: 10px;
+}
+
+.add-to-cart-btn:hover,
+.buy-now-btn:hover {
+  background-color: #2980b9;
+}
+ .tracking_link{
+ 
+  background-color: #fb641b;
+
+
+  color: white;
+  font-weight: bold;
+  text-align: center;
+ padding: 3px 20px;
+ width: 150px;
+}
+.tracking_link a {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .product {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+  }
+
+
+  .add-to-cart-btn,
+  .buy-now-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+}
+
+    </style>
+</head>
+<body>
+   
+    
+    <div class="container">
+        {% for order in orders %}
+        
+        <div class="product-container">
+          
+            <div class="product">
+             
+                <span class="order-icon">
+                 
+                  <img src="{{order.img1}}" alt="">
+                </span>
+
+            </div>
+            <div class="product-details">
+               <a href="{{order.tracking_link}}" style=" text-decoration: none;"><p class="tracking_link">tracking link</p></a>
+              <!-- <p> p {{order.tracking_link}}</p>  -->
+              
+
+                <p>Order ID: {{ order.order_id}}</p>
+                <p>Order Date: {{ order.order_date}}</p>
+                <p>Customer: {{ order.name }}</p>
+                <p>Delivery Address: {{ order.address }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+</body>
+
+</html>

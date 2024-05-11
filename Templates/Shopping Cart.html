@@ -1,0 +1,199 @@
+{% load static %}
+
+<html lang="en">
+<style>
+    
+    input {
+
+padding: 10px; /* Add padding */
+border: none; /* Remove default border */
+border-bottom: 1px solid rgb(145, 15, 123); /* Set bottom border */
+width: 200px;
+font-size: 16px; /* Set font size */
+outline: none; /* Remove default focus outline */
+background-color: #fff; /* Set background color */
+color: #333; /* Set text color */
+}
+#margin::placeholder {
+color: black; /* Set placeholder color to black */
+}
+
+
+
+label {
+font-weight: bold;
+font-size: 15px;
+}
+#yes {
+font-size: 20px; /* Set font size for radio button */
+}
+#no {
+font-size: 40px; /* Set font size for radio button */
+}
+.row{
+width: 100%;
+background-color: rgb(255,215,0);
+font-family: Arial, sans-serif;
+padding: 3px;
+text-align: center;
+color: rgb(94, 91, 91);
+}
+
+
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{% static 'Shopping Cart.css' %}">
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    <h1 style="margin-left: 30px;">Shopping Cart</h1>
+    {% if error %}
+    <div class="msg" style="color: red;">
+        <h4>{{ error }}</h4>
+    </div>
+    {% endif %}
+        {% for p in cart_product %}
+        <div class="container">
+            <div class="cart">
+                <div class="item">
+                    <img src="{{p.img1}}" alt="Product Image">
+                    <div class="item-details">
+                        <span class="item-price" style="color: green; font-weight: bold;">{{p.title}}</span>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <span> <b>&#8377 {{p.price }} </b><br>
+                        <span>Total Amount: {{p.total_amount}} </span>
+                        <span class="item-qty">Qty: {{p.qty}}</span>
+                        <span class="item-price">color:{{p.color}}</span>
+                        <span class="item-price">Size:{{p.size}}</span>
+                    </div>
+                    <form method="post" action="/reseller/remove_product/">
+                        {% csrf_token %}
+                        <button class="remove-button" type="submit" value="{{p.id}}" name="remove"> <i class="fas fa-trash-alt"></i> Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+  
+
+    
+
+  
+
+
+  
+<!--
+    <div class="total-container">
+        <h2>Price details</h2>
+        <div class="total">
+            <span style="color: grey;">Price(1 item): {{p.total_qty }} </span>
+            <br>
+            <span style="color: green;">Delivery Charges: free Delivery </span>
+            <br>
+            <span>Total Amount: {{p.total_amount}} </span>
+            <form method="post" action="/check_out/">
+                {% csrf_token %}
+                <button class="proced-button" value="" name="check_out">Continue</button>
+            </form>
+        </div>-->
+        <div class="container1">
+            <form id="checkoutForm" method="post" action="/reseller/check_out/">
+                {% csrf_token %}
+                <label for="reselling" style="color: black; font-weight: bold; font-family: Arial, sans-serif; font-size: 17px;">Reselling the order?</label>
+                
+                <input type="radio" id="yes" name="reselling" value="yes">
+                <label for="yes" style="color: black; font-size: 18px;">Yes</label>
+                <input type="radio" id="no" name="reselling" value="no">
+                <label for="no" style="color: black; font-size: 18px;">No</label>
+                
+                <br>
+                
+                <!-- Hidden input field to store reselling margin -->
+                <div id="resellingMarginInput" style="display: none;">
+                    <br>
+                    <label for="margin" style="color: black; font-weight: bold; font-family: Arial, sans-serif;">Final price:</label>
+                    <p style="color: rgb(145, 15, 123); font-weight: 700; font-family: Arial, sans-serif;">Order Total: {{total_price}} + Your margin</p>
+                    <input type="number" id="margin" name="margin" placeholder="&#8377; Final price"><br>
+                    <br>
+                    <span id="finalPriceDisplay" style="color:green; margin-top:10px"></span>
+                </div>
+                
+                <br>
+                <br>
+                
+                <button class="proced-button" value="" name="check_out" style="margin-top: 0px; background-color: rgb(145, 15, 123);">Continue</button>
+            </form>
+        </div>
+        
+        <script>
+            document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+                var total_price = parseFloat("{{total_price}}");
+                var margin = parseFloat(document.getElementById("margin").value);
+                
+                if (margin < total_price) {
+                    alert("Final price should be equal to or greater than the total price.");
+                    event.preventDefault();
+                }
+            });
+        </script>
+        
+  
+
+</body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const resellingRadio = document.getElementById('yes');
+        const marginInput = document.getElementById('resellingMarginInput');
+        const marginField = document.getElementById('margin');
+        const finalPriceDisplay = document.getElementById('finalPriceDisplay'); // Added this line
+        const totalPrice = parseFloat('{{ total_price }}'); // Get the total price from the backend
+    
+        resellingRadio.addEventListener('change', function() {
+            if (resellingRadio.checked) {
+                marginInput.style.display = 'block';
+            } else {
+                marginInput.style.display = 'none';
+                marginField.value = ''; // Clear margin input if user selects 'No'
+                finalPriceDisplay.textContent = ''; // Clear final price display if user selects 'No'
+            }
+        });
+    
+        marginField.addEventListener('input', function() {
+            const marginValue = parseFloat(marginField.value);
+            if (!isNaN(marginValue)) {
+                const finalPrice =   marginValue - totalPrice;
+                // Display final price in the placeholder
+                marginField.placeholder = 'Your margin: ' + finalPrice.toFixed(2);
+                finalPriceDisplay.textContent = 'Your margen:' + finalPrice.toFixed(2); // Update final price display
+            }
+        });
+    });
+
+
+    
+    </script>
+    
+</html>

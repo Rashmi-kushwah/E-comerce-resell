@@ -1,0 +1,174 @@
+.main-container {
+    
+
+}
+.container1 {
+margin-top: 20px;
+
+margin-right: 30px;
+
+color: rgba(0, 0, 0, 0.5);
+outline-style: none;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+border: 1px solid rgba(0, 0, 0, 0.1);
+border: 1px solid grey;
+flex: 1;
+
+margin-right: 20px;
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+}
+
+.container {
+    margin-bottom: 10px; 
+ 
+    margin-right: 30px;
+
+    color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid grey;
+    flex: 1;
+   
+    margin-right: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.total-container {
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid grey;
+    flex: 1;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+ h3 {
+    color: black;
+
+}
+
+.total span {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: black;
+}
+
+.total {
+    font-weight: bold;
+    color: black;
+
+
+}
+.proced-button {
+width: 18%; /* Ya fir apne requirement ke hisaab se width set karein */
+font-size: 17px;
+margin-top: 40px;
+/* background-color: rgb(255, 215, 0); */
+background-color: rgb(145, 15, 123);
+color: #fff;
+font-weight: 700;
+border: none;
+padding: 10px 10px;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.cart {
+    color: black;
+    margin-top: 20px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+   
+}
+
+.item-name {
+    margin-right: 10px;
+}
+
+.item img {
+    width: 100px;
+    height: auto;
+}
+
+.item-details {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.item-price,
+.item-qty {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.remove-button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.rating i {
+    font-weight: 300;
+    color: #ffc107;
+}
+
+.price {
+    color: #fe980f;
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 570px) {
+    
+    .container,
+    .container1 {
+        width: 100%;
+        max-width: none;
+      
+        margin-bottom: 20px;
+    }
+    .row{
+        
+    }
+        
+   
+    .cart{
+        width: 100%;
+    }
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item-name {
+        margin-bottom: 5px;
+        margin-right: 0;
+    }
+    .proced-button {
+        width: 100%;
+font-size: 12px; /* Apne requirement ke hisaab se font size set karein */
+}
+
+}

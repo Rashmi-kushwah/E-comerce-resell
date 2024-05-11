@@ -1,0 +1,262 @@
+{% include "header.html"%}
+<head>
+  <title></title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
+</head>
+        <style>
+            
+  
+            img {
+        width: 100%;
+        height: 350px;
+        margin-top: 5px;
+    }
+/*-----items -----*/
+.related,.row{
+         
+         width: 100%;
+         height: auto;
+        
+        
+     }
+    
+     .row {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between; /* Optional: adjust as needed */
+}
+
+.column {
+width: 24%; /* Adjust as needed to accommodate any potential margins or padding */
+margin-bottom: 20px; /* Optional: Add bottom margin to create space between rows */
+}
+
+.items {
+
+padding: 10px; /* Optional: Add padding to the items for better spacing */
+}
+/*
+.details {
+text-align: center;
+}*/
+
+
+.items img {
+max-width: 100%;
+height: 350px;
+
+}
+
+.related{ 
+
+width: 100%;
+margin: 0 auto 40px;
+}
+.related h2{ 
+
+width: 100%;
+margin: 0 auto 40px;
+
+}
+
+
+
+.hero{
+margin-top: 20px;
+width: 100%;
+
+
+}
+.row{
+
+width: 100%;
+height: auto;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.slider{
+height: vh;
+display: flex;
+}
+.product img {
+height: 15vh; /* Set the height of the images */
+margin-bottom: 9px;
+cursor: pointer;
+}
+
+.preview img{
+height: 100%;
+}
+.brand{
+background: #008000;
+width: fit-content;
+color: #fff;
+font-size: 12px;
+padding: 2px 5px;
+}
+h3{
+font-size: 45px;
+color: #555;
+margin-bottom: 20px;
+
+}
+.p{
+  color: green; 
+  font-weight: bold;
+  font-size: 14px;
+}
+.del{
+  color: rgb(255, 0, 0) ;margin-inline: 20px; 
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.main1 {
+    width: auto; /* Adjust width automatically */
+    height: auto; /* Adjust height automatically */
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+    display: inline-block; /* Display as inline block */
+    padding: 1px 10px; /* Adjust padding */
+    margin-right: 10px; 
+    height: 30px;
+   
+}
+
+.best-price {
+    height: auto; /* Adjust height automatically */
+    width: fit-content; 
+
+    background-color: rgb(2, 2, 71);
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px; /* Adjust padding */
+    border-radius: 3px;
+    text-transform: uppercase;
+
+    display: inline-block; /* Display as inline block */
+}
+
+
+.rating i {
+    font-weight: 200;
+    color: #ffc107;
+}
+
+
+/*--slider----*/
+
+   /* Media query for smaller screens */
+   @media (max-width: 768px) {
+    .row {
+        width: 100%;
+    }
+    .column {
+   
+        width: 50%;
+    }
+    .related h2 {
+        width: 100%;
+        font-size: 15px;
+    }
+    .main1 {
+        width: auto;
+        height: 25px;
+        margin-bottom: 6px;
+        color: green;
+    }
+    .rating i {
+        font-weight: 150;
+        color: #ffc107;
+    }
+    .p{
+      font-size: 12px;
+    }
+    .price,
+    .del {
+        display: block;
+        margin-bottom: 10px; /* Yeh margin aapki requirement ke according adjust karein */
+    }
+   
+    .del {
+       margin-left: 5px;
+    }
+    .sliding image{
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+}
+        </style>
+    </head>
+    <body>
+      <!--
+      <h3>category </h3>
+      <h1>Category: {{ category }}</h1>
+      {% for p in category %}
+        {{ p.category }}
+      {% endfor %}-->
+
+
+     
+        <div class="row">
+          {% for p in products %}
+          
+            <div class="column">
+           
+                <div class="items">
+                  <a href="{% url 'productdt' product_id=p.Product_id %}">
+                    <img src="{{p.img1}}" alt="">
+                  </a>
+                    <div class="details">
+                        <p style="color:black; font-size: 16px; font-weight: bold;" > {{ p.sub_title}} </p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <p>
+                          <span class="price"style="font-size:18px; "><b>&#8377 {{ p.price }}</b>
+                            <del class="del" style="font-size: 15px;">&#8377 MRP {{ p.mrp }}</del></span>
+                        </p>
+                        <div class="best-price">
+                          <sup>Best Price</sup>
+                        </div><br>
+                        <div class="main1">
+                           <p class="discount_{{p.Product_id}}"></p></div>
+                        <p class="p"> {{ p.title }}</p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var price = parseFloat('{{ p.price }}');
+                var mrp = parseFloat('{{ p.mrp }}');
+      
+                var percentageDiscount = ((mrp - price) / mrp) * 100;
+      
+                document.querySelector(".discount_{{p.Product_id}}").innerHTML =  percentageDiscount.toFixed(0) + "%" + " Margin" ;
+            </script>
+            {% endfor %}
+            </div>
+
+            
+</html>  
+
+        
+    </body>

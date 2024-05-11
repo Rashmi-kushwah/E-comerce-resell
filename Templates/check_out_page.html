@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container1 {
+            max-width: 800px;
+            align-items: center;
+            margin: 20px auto;
+            background-color: #fff;
+           
+            padding: 20px;
+            display: flex;
+        }
+
+        .order-box1 {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .order-details1 {
+            font-size: 16px;
+            flex: 1;
+        }
+        .order-details1 form{
+            font-size: 16px;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 10px;
+
+        }
+        .order-details1 h2 {
+            color: #333;
+            border-bottom: 2px solid grey;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            
+        }
+        .submt-button{
+            padding: 14px 40px;
+            outline: none;
+            border: 0;
+            border-radius: 20px;
+            background-image: linear-gradient(to right, #ff00ff, #ffff00);
+            color: white;
+            
+            
+            cursor: pointer;
+            font-size: 20px;
+            margin: auto; /* Centering the button horizontally */
+            display: block;
+            
+
+        }
+        .submt-button:hover{
+            background-image: linear-gradient(to right, #ff00ff, #00ffff);
+        }
+
+        body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    form {
+        max-width: 800px;
+      height: 100%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+      box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    div {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: black;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      height: 50px;
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 10px; /* Add margin to the bottom of input boxes */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    font-size: 15px;
+    padding-left: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    outline-style: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+      box-sizing: border-box;
+    }
+
+  
+        @media only screen and (max-width: 600px) {
+            /* Styles for screens smaller than 600px */
+            .container {
+                width: 100%;
+                flex-direction: column;  /* Stack items vertically on small screens */
+            }
+            .order-details1 {
+                width: 100%;
+            }
+            form {
+        padding: 8px;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+      }
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+
+    
+             
+  
+
+      
+      
+  
+            <form method="post" action="/reseller/confirm_order/?m={{ margin }} " >
+             
+            {% csrf_token %}
+
+            <div class="order-details1">
+              {% if margin %}
+              <div class="order-details1"></div>
+               <h3>your reselling amount: {{ margin }}  </h3>
+               <h3>your margin:{{ m }} </h3>
+               {% endif %}
+                <h2>Fill the Form</h2>
+              </div>
+              
+              </div>
+                <label for="name">Full name(First and last name):</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Enter your name" required>
+              </div>
+              
+                <div>
+                  <label for="phone">Phone No.:</label>
+                  <input type="text"  name="phone" placeholder="Enter your mobile number (10 digits)" required maxlength="10">
+                </div>
+                
+                <div>
+                  <label for="address"> Address:</label>
+                  <textarea  name="address" placeholder="Enter your address"></textarea>
+                </div>
+                
+                <div>
+                 
+                    <label for="landmark">Pincode:</label>
+                    <input type="text"  name="pincode" placeholder="Enter your  pincode" required>
+                </div>
+                
+                <div>
+                    <label for="landmark">Landmark:</label>
+                    <input type="text" id="landmark" name="landmark" placeholder="Enter your landmark " required>
+                </div>
+                
+                <div>
+                  <label for="state">State Name:</label>
+                  <input type="text" name="state" placeholder="Enter your state name" required>
+                </div>
+                
+               
+                    <button class="submt-button" id=""  type="submit"> Order Place</button>
+                </div>
+            </form>
+
+                       
+       
+           
+
+           
+        </div>
+             
+    </div>
+
+</body>
+
+
+
+
+
+

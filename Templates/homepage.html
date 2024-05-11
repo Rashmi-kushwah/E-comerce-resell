@@ -1,0 +1,814 @@
+
+{% include 'header.html' %}                                                                                                                        
+                                                                                                                                                                                                                                                                                                     
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      
+      <style>
+             /*----marquee-------*/
+        .marquee {                               
+  overflow: hidden;
+  background-image: linear-gradient(to right, #ff00ff, #ffff00);
+}
+
+.marquee-content {
+  display: flex;                            
+  animation: marqueeAnimation 10s linear infinite;                       
+}
+                        
+.marquee-content span {
+  margin-right: 50px;                  
+  flex-shrink: 0;
+}
+/*------marque end-------*/
+@keyframes marqueeAnimation {                       
+  0% {
+    transform: translateX(0);
+  }
+  100% {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    transform: translateX(-100%);
+  }
+}
+.category-container {
+  display: flex;
+
+  justify-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #ccc; /* Add border */
+  border: 1px solid yellow;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+  width: 100%;
+
+
+  
+  
+
+   
+}
+
+.category-item {
+  margin: 0px 40px 5px 15px;
+  text-align: center;
+  /* Remove float: left; */
+}
+
+.category-item img {
+  width: 80px; /* Adjust the image size as needed */
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.category-item p {
+  margin: 5px;
+}
+/* Adjustments for screens smaller than 570px */
+
+.more {
+  position: relative;
+}
+
+.more_lan {
+
+  cursor: pointer;
+}
+/* Add this CSS inside your <style> tag */
+    .more_lan svg {  
+    transition: transform 0.3s ease; /* Smooth transition for the rotation effect */
+}
+
+.more_lan:hover svg {
+    transform: rotate(170deg); /* Rotate the icon by 90 degrees on hover */
+}
+
+
+.login_dropdowm_more {
+    cursor: pointer;
+    margin-left: 10px;
+    display: none; /* Dropdown initially hidden */
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%;
+}
+
+/* Add hover effect for dropdown */
+.more:hover .login_dropdowm_more {
+    display: block;
+}
+.login_drop_list:hover {
+        transform: scale(1.1); /* Change the scale factor according to your preference */
+        transition: transform 0.4s ease; /* Smooth transition for the scaling effect */
+    }
+
+.login_dropdown_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.login_drop_list {
+  padding: 8px 0;
+ 
+  font-size: 14px;
+}
+
+
+.more_icon {
+  width: 1em;
+  margin-right: 8px;
+}
+.related{ 
+
+width: 90%;
+margin: 0 auto 40px;
+}
+.slider-container {
+        width: 100%;
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+        min-width: 100%;
+    }
+    
+    img {
+        width: 100%;
+        height: 350px;
+        margin-top: 5px;
+    }
+/*-----items -----*/
+.related,.row{
+         
+         width: 100%;
+         height: auto;
+        
+        
+     }
+    
+     .row {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between; /* Optional: adjust as needed */
+}
+
+.column {
+width: 24%; /* Adjust as needed to accommodate any potential margins or padding */
+margin-bottom: 20px; /* Optional: Add bottom margin to create space between rows */
+}
+
+.items {
+
+padding: 10px; /* Optional: Add padding to the items for better spacing */
+}
+/*
+.details {
+text-align: center;
+}*/
+
+
+.items img {
+max-width: 100%;
+height: 350px;
+
+}
+
+.related{ 
+
+width: 100%;
+margin: 0 auto 40px;
+}
+.related h2{ 
+
+width: 100%;
+margin: 0 auto 40px;
+
+}
+
+
+
+.hero{
+margin-top: 20px;
+width: 100%;
+
+
+}
+.row{
+
+width: 100%;
+height: auto;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+
+.slider{
+height: vh;
+display: flex;
+}
+.product img {
+height: 15vh; /* Set the height of the images */
+margin-bottom: 9px;
+cursor: pointer;
+}
+
+.preview img{
+height: 100%;
+}
+.brand{
+background: #008000;
+width: fit-content;
+color: #fff;
+font-size: 12px;
+padding: 2px 5px;
+}
+h3{
+font-size: 45px;
+color: #555;
+margin-bottom: 20px;
+
+}
+.p{
+  color: green; 
+  font-weight: bold;
+  font-size: 14px;
+}
+.del{
+  color: rgb(255, 0, 0) ;margin-inline: 20px; 
+  margin-top: 3px;
+  font-size: 14px;
+}
+
+.main1 {
+    width: 100px; /* Adjust width automatically */
+    height: auto; /* Adjust height automatically */
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+    display: inline-block; /* Display as inline block */
+    padding: 1px 10px; /* Adjust padding */
+    margin-right: 10px; 
+    height: 30px;
+   
+}
+
+.best-price {
+    height: auto; /* Adjust height automatically */
+    width: fit-content; 
+
+    background-color: rgb(2, 2, 71);
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px; /* Adjust padding */
+    border-radius: 3px;
+    text-transform: uppercase;
+
+    display: inline-block; /* Display as inline block */
+}
+
+
+.rating i {
+    font-weight: 200;
+    color: #ffc107;
+}
+
+
+
+   /* Media query for smaller screens */
+   @media (max-width: 768px) {
+    /*--slider----*/
+.slider-container{
+      height: 70%; 
+}
+    .row {
+        width: 100%;
+    }
+    .column {
+     
+        width: 48%;
+    }
+    
+.items img{
+  object-fit: contain;
+  max-height: 180px;
+/* border: 1px solid grey; */
+}
+    .related h2 {
+        width: 100%;
+        font-size: 15px;
+    }
+    .main1 {
+        width: 100px;
+        height: 25px;
+        margin-bottom: 6px;
+        color: green;
+    }
+    .rating i {
+        font-weight: 150;
+        color: #ffc107;
+    }
+    .p{
+      font-size: 12px;
+    }
+    .price,
+    .del {
+        display: block;
+        margin-bottom: 10px; /* Yeh margin aapki requirement ke according adjust karein */
+    }
+   
+    .del {
+       margin-left: 5px;
+    }
+    .sliding image{
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+}
+.amazon-boxes {
+  width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Add space between items */
+}
+
+.amazon-box {
+    flex: 0 0 calc(25% - 10px); /* Set width for four items per line with space between */
+    margin-top: 10px;
+    height: 350px;
+    background-image: linear-gradient(to right, #ff00ff, #ffff00);
+    padding: 10px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.amazon-box img {
+    width: 100%; /* Image will take the full width of its container */
+    height: 220px;
+    transition: transform 0.3s ease; 
+}
+
+
+
+.amazon-box:hover img {
+  transform: scale(1.1); /* Scale up by 10% on hover */
+}
+.amazon-box p {
+  font-size: 13px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 8px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.amazon-box:hover p {
+    transform: translateY(0);
+    font-size: 12px;
+}
+ /*
+.ribbon {
+  width: 60px; 
+  margin-left: 270px; 
+
+  background-color: #ff00ff; 
+  color: white; 
+  padding: 5px 10px; 
+  transform: rotate(5deg); 
+  transform-origin: left;
+  position: absolute; 
+  z-index: 1;
+}
+*/
+
+
+
+@media only screen and (max-width: 768px) {
+    .amazon-box {
+      height: 50%;
+        flex-basis: calc(50% - 10px); /* Set width for two items per line on smaller screens */
+    }
+    .amazon-box img {
+    width: 100%; 
+    height: 85%;
+   
+}
+    .amazon-box p {
+   font-size: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+
+
+
+  .category-container {
+    
+    display: flex;
+    overflow-x: scroll; /* Horizontal scroll */
+    padding: 20px;
+    border-bottom: 1px solid #ccc; /* Add border */
+    border: 1px solid yellow;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+    width: 100%;
+    
+}
+
+
+
+ 
+  
+  /* Styling for category item */
+.category-item {
+    margin-right: 1px; /* Adjust spacing between items */
+}
+
+/* Styling for category item image */
+.category-item img {
+    width: 80px; /* Adjust the image size as needed */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Media query for smaller screens */
+
+    .category-container {
+        overflow-x: auto; /* Horizontal scroll */
+        justify-content: flex-start; /* Align items to the start */
+    }
+
+    .category-item {
+        margin-right: 10px; /* Adjust spacing between items */
+    }
+
+    .category-item img {
+        width: 62px; /* Adjust the image size as needed */
+        height: 62px;
+    }
+
+
+.category-item p {
+  margin: 3px;
+}
+  .category-item p {
+    font-size: 7px;
+  }
+  .more {
+        font-size: 10px;
+    }
+    .more_lan{
+      display: none;
+    }
+    .login_dropdowm_more {
+      display: none;
+    }
+    .login_drop_list{
+      display: none;
+    }
+
+  }    
+  
+   </style>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+    </head>
+    <body>
+        
+    
+<!----------Category---------->                 
+ <!--<h1>Category To Shoes</h1>-->                      
+                          
+ <div class="category-container">         
+ 
+            <a href="{% url 'category' %}?category_value=Girls" style="text-decoration: none;">
+            <div class="category-item">
+                <img src="https://m.media-amazon.com/images/I/31yYTOklnsL._AC_SR320,400_.jpg" >  </a>
+              <!-- Angle icon and dropdown menu -->
+              <div class="more">Women top
+                <span class="more_lan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                    </svg>
+                </span>
+                <div class="login_dropdowm_more">
+                    <ul class="login_dropdown_list">
+                        <li class="login_drop_list"><b style="font-size: 12px;">More in Women's Shoes</b></li>
+                        <li class="login_drop_list">Sports Shoes</li>
+                            <li class="login_drop_list">Cassual Shoes</li>
+                            <li class="login_drop_list">Loafer Shoes</li>
+                            <li class="login_drop_list">Formal Shoes</li>  
+                            <li class="login_drop_list">Sneaker's Shoes</li>
+                            <li class="login_drop_list">Boots</li>
+                            <li class="login_drop_list">Derby Shoes</li>
+                    </ul>
+                </div>
+                </div>
+          
+            <!-- End of Angle icon and dropdown menu -->
+                
+            </div>
+            <a href="{% url 'category' %}?category_value=Girls" style="text-decoration: none;">
+              <div class="category-item">
+                  <img src="https://m.media-amazon.com/images/I/6109c+c00qL._AC_UL320_.jpg" >  </a>
+                <!-- Angle icon and dropdown menu -->
+                <div class="more">Girls top	
+                  <span class="more_lan">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                      </svg>
+                  </span>
+                  <div class="login_dropdowm_more">
+                      <ul class="login_dropdown_list">
+                          <li class="login_drop_list"><b style="font-size: 12px;">More in Women's Shoes</b></li>
+                          <li class="login_drop_list">Sports Shoes</li>
+                              <li class="login_drop_list">Cassual Shoes</li>
+                              <li class="login_drop_list">Loafer Shoes</li>
+                              <li class="login_drop_list">Formal Shoes</li>  
+                              <li class="login_drop_list">Sneaker's Shoes</li>
+                              <li class="login_drop_list">Boots</li>
+                              <li class="login_drop_list">Derby Shoes</li>
+                      </ul>
+                  </div>
+                  </div>
+            
+              <!-- End of Angle icon and dropdown menu -->
+                  
+              </div>
+              <a href="{% url 'category' %}?category_value=Mens" style="text-decoration: none;">
+                <div class="category-item">
+                    <img src="https://m.media-amazon.com/images/I/515myfhUVJL._SY606_.jpg" >  </a>
+                    <!-- Angle icon and dropdown menu -->
+                  <div class="more">Mens Shirt
+                    <span class="more_lan">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                        </svg>
+                    </span>
+                    <div class="login_dropdowm_more">
+                        <ul class="login_dropdown_list">
+                            <li class="login_drop_list"><b style="font-size: 12px;">More in Kid's Shoes</b></li>
+                            <li class="login_drop_list">Sports Shoes</li>
+                            <li class="login_drop_list">Cassual Shoes</li>
+                            <li class="login_drop_list">Loafer Shoes</li>
+                            <li class="login_drop_list">Formal Shoes</li>  
+                            <li class="login_drop_list">Sneaker's Shoes</li>
+                            <li class="login_drop_list">Boots</li>
+                            <li class="login_drop_list">Derby Shoes</li>
+                        </ul>
+                    </div>
+                    </div>
+              
+                <!-- End of Angle icon and dropdown menu -->
+                
+                </div>
+                <a href="{% url 'category_type' %}?category_value=casual" style="text-decoration: none;">                                                               
+                  <div class="category-item">
+                    <img src="https://m.media-amazon.com/images/I/81BOq9tAN0L._SY679_.jpg" >
+                </a> <!-- Angle icon and dropdown menu -->
+                    <div class="more">Printed top
+                            <span class="more_lan">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                                </svg>
+                            </span>
+                        <div class="login_dropdowm_more">
+                            <ul class="login_dropdown_list">
+                                <li class="login_drop_list"><b style="font-size: 12px;">More in Men's Shoes</b></li>
+                                <li class="login_drop_list">Sports Shoes</li>
+                                <li class="login_drop_list">Cassual Shoes</li>
+                                <li class="login_drop_list">Loafer Shoes</li>
+                                <li class="login_drop_list">Formal Shoes</li>  
+                                <li class="login_drop_list">Sneaker's Shoes</li>
+                                <li class="login_drop_list">Boots</li>
+                                <li class="login_drop_list">Derby Shoes</li>
+                              
+                            </ul>
+                        </div>
+                        </div>
+                  
+                    <!-- End of Angle icon and dropdown menu -->
+              
+                    
+                    
+                </div>
+              
+          
+            <a href="{% url 'category_type' %}?category_value=formal"  style="text-decoration: none;">
+            <div class="category-item">
+                <img src="https://m.media-amazon.com/images/I/61YFdMAGVAL._SY606_.jpg" >  </a>
+                <!-- Angle icon and dropdown menu -->
+              <div class="more">office wear
+                <span class="more_lan">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+                    </svg>
+                </span>
+                <div class="login_dropdowm_more">
+                    <ul class="login_dropdown_list">
+                        <li class="login_drop_list"><b style="font-size: 12px;">More in Kid's Shoes</b></li>
+                        <li class="login_drop_list">Sports Shoes</li>
+                        <li class="login_drop_list">Cassual Shoes</li>
+                        <li class="login_drop_list">Loafer Shoes</li>
+                        <li class="login_drop_list">Formal Shoes</li>  
+                        <li class="login_drop_list">Sneaker's Shoes</li>
+                        <li class="login_drop_list">Boots</li>
+                        <li class="login_drop_list">Derby Shoes</li>
+                    </ul>
+                </div>
+                </div>
+  
+   
+    <!-- End of Angle icon and dropdown menu -->
+     
+    </div>
+    <a href="{% url 'category_type' %}?category_value=sport" style="text-decoration: none;">
+      <div class="category-item">
+          <img src="https://m.media-amazon.com/images/I/51d7BioO1NL._AC_UL320_.jpg" >  </a>
+         <!-- Angle icon and dropdown menu -->
+         <div class="more">Sports top
+          <span class="more_lan">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+              </svg>
+          </span>
+          <div class="login_dropdowm_more">
+              <ul class="login_dropdown_list">
+                  <li class="login_drop_list"><b style="font-size: 12px;">More in Women's Shoes</b></li>
+                  <li class="login_drop_list">Sports Shoes</li>
+                      <li class="login_drop_list">Cassual Shoes</li>
+                      <li class="login_drop_list">Loafer Shoes</li>
+                      <li class="login_drop_list">Formal Shoes</li>  
+                      <li class="login_drop_list">Sneaker's Shoes</li>
+                      <li class="login_drop_list">Boots</li>
+                      <li class="login_drop_list">Derby Shoes</li>
+              </ul>
+          </div>
+          </div>
+     
+ 
+    
+       
+        </div>
+        </div>
+  
+  
+  
+  
+  
+  
+
+  </div>
+  </div>
+  <div class="slider-container">
+    <!----------SLIDER------------->
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+           
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/830b0b3bff28e292.jpg?q=20" class="d-block w-100" alt="...">
+            
+          </div>
+          <div class="carousel-item">
+            
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/004/707/493/small/online-shopping-on-phone-buy-sell-business-digital-web-banner-application-money-advertising-payment-ecommerce-illustration-search-vector.jpg" class="d-block w-100" alt="...">
+            
+          </div>
+          <div class="carousel-item">
+            <img src="https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/830b0b3bff28e292.jpg?q=20" class="d-block w-100" alt="...">
+            
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <!----------SLIDER CLOSE ------------->
+    </div>
+    <div class="related">
+  <h2 style=" 
+  background-image: linear-gradient(to right, #ff00ff, #ffff00); text-align: center; ">Top Categories to choose form</h2>
+</div>
+<div class="row">
+    {% for p in products %}
+      <div class="column">
+     
+          <div class="items">
+        
+            <!--<div class="ribbon">
+              New
+            </div>-->
+            <a href="{% url 'productdt' product_id=p.Product_id %}">
+              
+              <img src="{{p.img1}}" alt="">
+             
+            </a>
+              <div class="details">
+                  <p style="color:black; font-size: 16px; font-weight: bold;" > {{ p.sub_title}} </p>
+                  <div class="rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <i class="fa fa-star-o"></i>
+                  </div>
+                  <p>
+                    <span class="price"style="font-size:18px; "><b>&#8377 {{ p.price }}</b>
+                      <del class="del" style="font-size: 15px;">&#8377 MRP {{ p.mrp }}</del></span>
+                  </p>
+                  <div class="best-price">
+                    <sup>Best Price</sup>
+                  </div><br>
+                  <div class="main1">
+                     <p class="discount_{{p.Product_id}}"></p></div>
+                  <p  class="p"> {{ p.title }}</p>
+              </div>
+          </div>
+      </div>
+      <script>
+          var price = parseFloat('{{ p.price }}');
+          var mrp = parseFloat('{{ p.mrp }}');
+
+          var percentageDiscount = ((mrp - price) / mrp) * 100;
+
+          document.querySelector(".discount_{{p.Product_id}}").innerHTML =  percentageDiscount.toFixed(0) + "%" + " off" ;
+      </script>
+      {% endfor %}
+      <br>
+      <div class="related">
+        <h2 style="text-align: center;width: 100%;   background-image: linear-gradient(to right, #ff00ff, #00ffff); padding: 5px;">Brands in this category on Ecommerce</h2>
+       <img class="sliding image" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/ccbe2721-e95f-4563-9dd8-ee24639c27e2.__CR0,0,970,300_PT0_SX970_V1___.png" width="100%"style="fit-content:cover"  alt="">
+        <h2 style="  background-image: linear-gradient(to right, #ff00ff, #00ffff);">Brands in this category on  Ecommerce </h2>
+          
+          
+       
+          <div class="amazon-boxes">
+            <div class="amazon-box">
+              <img style=" background-image: linear-gradient(to right, #ff00ff, #ffff00);"src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/aba1db6f-5b1a-49d3-86ba-cbaa1436576a._CR0,0,1200,628_SX460_QL70_.jpg" alt="" >
+        
+              <p>This beautiful top is made from quality fabric that adds comfort. 
+               </p>
+            </div>
+            <div class="amazon-box">
+              <img src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/ddc18584-a4c7-4bde-8e02-60badb30cd9e._CR0,0,1200,628_SX920_QL70_.png" alt="" >
+          
+              <p>This beautiful top is made from quality fabric that adds comfort. 
+               </p>
+            </div>
+            <div class="amazon-box">
+              <img src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/e32af9fb-01b2-4c0c-be57-8ff207537c77._CR0,215,3000,1570_SX460_QL70_.jpg" alt="" >
+        
+              <p>This beautiful top is made from quality fabric that adds comfort. 
+               </p>
+            </div>
+            <div class="amazon-box">
+              <img src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/aba1db6f-5b1a-49d3-86ba-cbaa1436576a._CR0,0,1200,628_SX460_QL70_.jpg" alt="" >
+        
+              <p>This beautiful top is made from quality fabric that adds comfort. 
+               </p>
+            </div>
+             
+          </div>
+      </div>
+      </div>
+      </div>
+      
+      
+          
+     
+        
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
+{% include 'footer.html' %}

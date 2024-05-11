@@ -1,0 +1,613 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+    <link rel="stylesheet" href="">
+    
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            
+            
+        }
+        .hero{
+           
+            margin-top: 30px;
+           height: 100vh;
+          
+           
+           
+
+        }
+        .row{
+            
+          
+          
+            width: 100%;
+            margin: 10px;
+            
+        }
+       
+        .row1{
+            
+          
+          
+            width: 100%;
+            margin: 10px;
+        
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+        }
+       
+      
+        .slider {
+            width: 100%;
+            display: flex;
+    flex-direction: column; /* Arrange elements vertically */
+    align-items: center;
+   
+}
+
+    .product img {
+    height: 17vh;
+    margin-bottom: 8px;
+    cursor: pointer;
+     
+    display: flex;
+    justify-content: center; /* Center thumbnails horizontally */
+    margin-top: 10px;
+}
+.product {
+    display: flex; /* Add flexbox layout */
+    justify-content: center; /* Center the items horizontally */
+    margin-top: 10px; /* Adjust margin as needed */
+}
+
+.thumbnail {
+    width: 95px; /* Adjust thumbnail size as needed */
+    height: auto;
+    margin: 0 5px; /* Adjust margin between thumbnails */
+    cursor: pointer;
+}
+
+.col {
+    width: 100%;
+    padding-left: 20px; /* Current padding */
+ 
+    /* padding-right: 100px;  */
+}
+.content{
+    margin-top: 20px;
+  width: 100%;
+}
+.main1{
+          color: #fe980f;
+          border-radius: 5px;
+          width: 100px;
+          margin-top: 3px;
+          font-weight: bold;
+          
+
+
+          } 
+    .brand{
+        
+            background: #008000;
+            width: fit-content;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 5px;
+        }
+        h3{
+            font-size: 45px;
+            color: #555;
+            margin-bottom: 20px;
+
+        }
+        .rating{
+                font-weight: 600;
+                color: #ffc107;
+            }
+            .price{
+             color: #fe980f;
+             font-size: 26px;
+             font-weight: bold;
+             padding-top: 10px;
+            }
+     button {
+            font-size: 16px;
+            padding: 15px 60px;
+            /* margin-top: 30px; */
+            cursor: pointer;
+            border: 0;
+            outline: none;
+            color: #fff;
+            
+            box-shadow: 0 4px 6px 0 rgb(0, 0, 0, 0, 0.12);
+        }
+        input{
+            width: 30px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            text-align: center;
+        }
+      .buy {
+            background-color: #ff9f00;
+        }
+
+        .cart {
+            background-color: #fb641b;
+            margin-left: 10px;
+        }
+        .related{
+           
+            width: 90%;
+            margin: 0 auto 40px;
+        }
+      
+        .related,.row{
+            width: 100%;
+            height: auto;
+        }
+        .related h2{
+            margin-left: 20px;
+        }
+        .column{
+            flex-basis: 22%;
+            height: 100%;
+        }
+        .items img{
+            width: 100%;
+        }
+        .details {
+            margin-top: 20px;
+        }
+        .details p{
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+  
+        select[name="size"] {
+    width: 150px; /* Set the width of the dropdown */
+    padding: 10px; /* Add padding */
+    border: 1px solid rgb(255,215,0);
+    border-radius: 5px; /* Add border radius */
+    font-size: 16px; /* Set font size */
+    outline: none; /* Remove default focus outline */
+    background-color: #fff; /* Set background color */
+    color: #333; /* Set text color */
+}
+
+/* Style the dropdown arrow */
+select[name="size"]::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+label{
+              margin-bottom: 10px;
+            }
+            select{
+              padding: 10px;
+              width: 150px;
+              font-size: 16px;
+              border-radius: 10px;
+              border: 1px solid rgb(255,215,0);
+            }
+
+
+
+.original {
+    cursor: crosshair;
+    position: relative; /* Add this line */
+}
+
+.original img {
+    height: 100vh;
+  
+   
+}
+
+.magnifier {
+  position: absolute;
+  background: #000;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+
+}
+
+.magnifier, .viewer {
+  display: none;
+}
+
+.product-details h2 {
+              font-size: 24px;
+              margin-bottom: 10px;
+            }
+
+            .product-details p {
+              font-size: 16px;
+              margin-bottom: 15px;
+            }
+
+            .product-details button {
+              padding: 10px 20px;
+              font-size: 16px;
+              margin-inline: 10px;
+              background-color: rgb(252, 162, 52);
+              color: #fff;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: background-color 0.3s;
+            }
+         
+           
+            @media (max-width: 768px) {
+    /* Chhote screens ke liye styles ko adjust karein */
+    .hero {
+        width: 100%;
+        margin-top: 10px; 
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+    }
+   .product-details{
+  
+    width: 100%;
+   }
+   .thumbnail{
+    /* border: 1px solid rgb(175, 172, 172);  */
+    width: 65px;
+    margin: 0 3px;
+   }
+    .slider {
+        width: 100%;
+ 
+    }
+   
+    .row {
+        width: 100%;
+        flex-direction:column; /* Column layout set karein */
+       
+    }
+    .row {
+     width: 100%;
+     
+       
+    }
+   
+   
+.original img{
+    width:100%;
+   
+    height: 450px; 
+   /* height: 60vh; */
+    /* border: 1px solid rgb(179, 173, 173);  */
+  
+}
+.related h2{
+font-size: 22px;
+}
+.product img {
+    height: 11.3vh;
+    /* border: 1px solid rgb(179, 173, 173); */
+        margin-bottom: 7px;
+    }
+  
+    .content{
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+    }
+    .col {
+        width:100%;
+        display: flex;
+        flex-direction: column;
+
+    }
+    button {
+        display: inline-block;
+            font-size: 16px;
+            padding: 15px 70px;
+            margin-top: 40px;
+            cursor: pointer;
+            border: 0;
+            outline: none;
+            color: #fff;
+            box-shadow: 0 4px 6px 0 rgb(0, 0, 0, 0, 0.12);
+        }
+        input{
+           width: 30%;
+        }
+    
+    /* Chhote screens ke liye styles ko adjust karein */
+    button {
+        padding: 10px 46px; /* Example padding ko adjust kiya gaya hai */
+        margin-top: 20px; /* Example margin ko adjust kiya gaya hai */
+    }
+    select[name="sizes"],
+    select[name="qty"] {
+        display: block; /* Display ko block set karein */
+        width:55%; /* Full width set karein */
+        margin-bottom: 10px; /* Bottom margin diya gaya hai */
+    }
+}
+            
+@media (max-width: 768px) {
+  .column {
+    width: 48%; /* Change the width to 48% to accommodate two columns per row */
+  }
+}
+
+
+    
+
+
+
+
+
+
+    </style>
+   
+    </head>
+    <body>
+       
+            
+
+            <div class="hero">
+            {% for product in get_product %}
+            <div class="zoom">
+                <div class="row">
+                    <div class="col">
+                        <div class="slider">
+                              <!-- Small Image -->
+                               
+                              <div class="original">
+                                    
+                                <img src="{{product.img1}}" id="target">
+                            </div>
+                            <div class="product">
+                                <img src="{{product.img1}}" class="thumbnail"  alt="">
+                                <img src="{{product.img2}}" class="thumbnail"  alt="">
+                                <img src="{{product.img3}}" class="thumbnail"  alt="">
+                                <img src="{{product.img4}}" class="thumbnail"  alt="">
+                                <img  src="{{product.img5}}" class="thumbnail"  alt="">
+                              <!-- <img  src="{{product.img6}}" alt=""> -->
+                            
+                                
+                               
+                           
+                            </div>
+                       
+                              
+                        
+                                </div>
+                                </div>
+                                
+                                
+                               
+
+                            <!-- Large Image
+                            <div class="viewer">
+                                <img src="{{product.img2}}">
+                                             <!-- Magnifier Effect 
+                    </div>
+                            
+                    <div class="magnifier">
+                        
+                    
+                    </div> -->
+                           
+               
+
+                        <div class="col">
+                            <div class="content">
+                                <p class="brand" >Brand:   {{product.brand}}</p>
+                                <p  style="font-size: 28px;">{{product.sub_title}}</p>
+                                <h2 style="color: green; font-weight: bold; font-size: 15px;">{{product.title}}</h2>
+                                <div class="rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                </div>
+                                
+                            
+
+                            
+                                    
+                            <div class="product-details">
+                                <br>
+                            
+                                <h4>Product details:</h4>
+                                
+                                <h5>Price: &#8377 {{product.price}}</h5>
+                                <del style="color: red;">&#8377 MRP {{product.mrp}} </del>
+                              <!-- <p >{{product.sub_title}}</p>--> 
+                               <p >Brand:{{product.brand}}</p>
+                                <p>pattern:{{product.pattern}}</p>
+                                <p>Color : {{product.color}}</p>
+                                <p>Neckline : {{product.neckline}}</p>
+                                <p>sleeve_length: {{product.sleeve_length}}</p>
+                                <p>occasion: {{product.occasion}}</p>
+                                <p>material: {{product.material}}</p>
+                                <p>net_quantity: {{product.net_quantity}}</p>
+                               <!--<p>net_quantity: {{product.description}}</p>--> 
+                            
+                            
+                        
+                            
+                            </div>
+                            <h6>More Information---------</h6>
+          
+                                    <form method="POST" action="/reseller/addcart/">
+                                        {% csrf_token %}
+                                    <label for="size">Size:</label>
+                                        <select name="sizes" id="size" class="sl" required>
+                                        <option value="">Select size </option>
+                                        <option value="{{product.size1}}">{{product.size1}}</option>
+                                        <option value="{{product.size1}}">{{product.size2}}</option>
+                                        <option value="{{product.size1}}">{{product.size3}}</option>
+                                        </select>
+                                      
+                                        <label for="size">Qty:</label>
+                                        <select name="qty" id="qty" required>
+                                        <option value="">Select qty</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                    
+                                        
+                                    </select>  
+                        
+                            <div>
+                                    <br><br>
+                                    {% if msg %}
+                                    <h3>{{msg}}</h3>
+                                    {% endif %}
+                                
+                                
+                                
+                                            <button class="buy" name="buy_id" id="buyNowBtn" value="{{product.Product_id}}">Buy Now</button>
+                                        
+                                        <button class="cart" name="product_id" id="addToCartBtn" value="{{product.Product_id}}">
+                                            <i class="fa fa-shopping-cart"></i> Add Cart</button>
+                                        
+                                    </form>
+                           
+                            
+                        </div>
+                    
+          
+          
+      
+            {% endfor %}
+
+          </div>
+          </div>
+          </div>
+     
+       
+          <h2 style="margin-top: 70px; margin-left: 20px;">related items</h2>
+          <div class="row">
+            {% for p in products %}
+              <div class="column">
+             
+                  <div class="items">
+                    <a href="{% url 'productdt' product_id=p.Product_id %}">
+                      <img src="{{p.img1}}" alt="">
+                    </a>
+                      <div class="details">
+                          <p style="color:black; font-size: 16px; font-weight: bold;" > {{ p.sub_title}} </p>
+                          <div class="rating">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star-half-o"></i>
+                              <i class="fa fa-star-o"></i>
+                          </div>
+                          <p>
+                            <span><b>&#8377 {{ p.price }}</b><del style="color: rgb(255, 0, 0) ;margin-inline: 10px; margin-top: 3px;">&#8377 MRP {{ p.mrp }}</del></span>
+                          </p>
+                          <div class="main1"> <p class="discount_{{p.Product_id}}"></p></div>
+                          <p style="color: green; font-weight: bold;font-size: 16px;"> {{ p.title }}</p>
+                      </div>
+                  </div>
+              </div>
+              <script>
+                  var price = parseFloat('{{ p.price }}');
+                  var mrp = parseFloat('{{ p.mrp }}');
+      
+                  var percentageDiscount = ((mrp - price) / mrp) * 100;
+      
+                  document.querySelector(".discount_{{p.Product_id}}").innerHTML =  percentageDiscount.toFixed(0) + "%" + " Margin" ;
+              </script>
+              {% endfor %}
+  
+              
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var sizeSelect = document.getElementById("size");
+            var quantityInput = document.getElementById("quantity");
+            var addToCartBtn = document.getElementById("addToCartBtn");
+            var buyNowBtn = document.getElementById("buyNowBtn");
+
+            function checkFields() {
+                var sizeValue = sizeSelect.value;
+                var quantityValue = quantityInput.value;
+
+                if (sizeValue !== "select-size" && quantityValue > 0) {
+                    addToCartBtn.removeAttribute("disabled");
+                    buyNowBtn.removeAttribute("disabled");
+                } else {
+                    addToCartBtn.setAttribute("disabled", true);
+                    buyNowBtn.setAttribute("disabled", true);
+                }
+            }
+
+            sizeSelect.addEventListener("change", checkFields);
+            quantityInput.addEventListener("input", checkFields);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Chhoti images ke references ko lete hain
+            var smallImages = document.querySelectorAll('.product img');
+    
+            // Har chhoti image per event listener lagate hain
+            smallImages.forEach(function(img) {
+                img.addEventListener('click', function() {
+                    // Main image ka source ko chhoti image ke source se badal dete hain
+                    document.getElementById('target').src = this.src;
+                });
+            });
+        });
+  
+    
+ </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+     $(document).ready(function(){
+         // Function to change main image and enable zoom
+         $('.thumbnail').click(function(){
+             // Get the src attribute of the clicked thumbnail
+             var imgSrc = $(this).attr('src');
+             
+             // Set the src attribute of the main image to the clicked thumbnail src
+             $('#target').attr('src', imgSrc);
+             
+             // Initialize zoom effect
+             $('.original').zoom();
+         });
+     });
+ </script>
+ 
+
+    
+    </html>
