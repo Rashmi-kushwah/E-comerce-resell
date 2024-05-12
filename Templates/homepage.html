@@ -4,11 +4,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
       
       <style>
-             /*----marquee-------*/
-        .marquee {                               
+ /*----marquee-------*/
+  .marquee {                               
   overflow: hidden;
   background-image: linear-gradient(to right, #ff00ff, #ffff00);
-}
+  }
 
 .marquee-content {
   display: flex;                            
@@ -19,7 +19,8 @@
   margin-right: 50px;                  
   flex-shrink: 0;
 }
-/*------marque end-------*/
+
+
 @keyframes marqueeAnimation {                       
   0% {
     transform: translateX(0);
@@ -28,15 +29,16 @@
     transform: translateX(-100%);
   }
 }
+/*------marque end-------*/
 .category-container {
   display: flex;
 
   justify-content: center;
   padding: 20px;
-  border-bottom: 1px solid #ccc; /* Add border */
+  border-bottom: 1px solid #ccc; 
   border: 1px solid yellow;
   background-color: #fff;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
 
 
@@ -53,7 +55,7 @@
 }
 
 .category-item img {
-  width: 80px; /* Adjust the image size as needed */
+  width: 80px;
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
@@ -62,7 +64,7 @@
 .category-item p {
   margin: 5px;
 }
-/* Adjustments for screens smaller than 570px */
+
 
 .more {
   position: relative;
@@ -72,20 +74,20 @@
 
   cursor: pointer;
 }
-/* Add this CSS inside your <style> tag */
+
     .more_lan svg {  
-    transition: transform 0.3s ease; /* Smooth transition for the rotation effect */
+    transition: transform 0.3s ease;
 }
 
 .more_lan:hover svg {
-    transform: rotate(170deg); /* Rotate the icon by 90 degrees on hover */
+    transform: rotate(170deg); 
 }
 
 
 .login_dropdowm_more {
     cursor: pointer;
     margin-left: 10px;
-    display: none; /* Dropdown initially hidden */
+    display: none; 
     position: absolute;
     background-color: white;
     min-width: 200px;
@@ -94,13 +96,13 @@
     top: 100%;
 }
 
-/* Add hover effect for dropdown */
+
 .more:hover .login_dropdowm_more {
     display: block;
 }
 .login_drop_list:hover {
-        transform: scale(1.1); /* Change the scale factor according to your preference */
-        transition: transform 0.4s ease; /* Smooth transition for the scaling effect */
+        transform: scale(1.1); 
+        transition: transform 0.4s ease; 
     }
 
 .login_dropdown_list {
@@ -158,17 +160,17 @@ margin: 0 auto 40px;
      .row {
 display: flex;
 flex-wrap: wrap;
-justify-content: space-between; /* Optional: adjust as needed */
+justify-content: space-between; 
 }
 
 .column {
-width: 24%; /* Adjust as needed to accommodate any potential margins or padding */
-margin-bottom: 20px; /* Optional: Add bottom margin to create space between rows */
+width: 25%; 
+margin-bottom: 10px; 
 }
 
 .items {
 
-padding: 10px; /* Optional: Add padding to the items for better spacing */
+padding: 5px; 
 }
 /*
 .details {
@@ -218,7 +220,7 @@ height: vh;
 display: flex;
 }
 .product img {
-height: 15vh; /* Set the height of the images */
+height: 15vh; 
 margin-bottom: 9px;
 cursor: pointer;
 }
@@ -245,14 +247,15 @@ margin-bottom: 20px;
   font-size: 14px;
 }
 .del{
-  color: rgb(255, 0, 0) ;margin-inline: 20px; 
+  color: rgb(255, 0, 0) ;
+  margin-inline: 20px; 
   margin-top: 3px;
   font-size: 14px;
 }
 
 .main1 {
-    width: 100px; /* Adjust width automatically */
-    height: auto; /* Adjust height automatically */
+    width: 100px; 
+    height: auto; 
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
   text-align: center;
@@ -260,25 +263,25 @@ margin-bottom: 20px;
     border-radius: 5px;
     color: green;
     font-weight: bold;
-    display: inline-block; /* Display as inline block */
-    padding: 1px 10px; /* Adjust padding */
+    display: inline-block; 
+    padding: 1px 10px; 
     margin-right: 10px; 
     height: 30px;
    
 }
 
 .best-price {
-    height: auto; /* Adjust height automatically */
+    height: auto; 
     width: fit-content; 
 
     background-color: rgb(2, 2, 71);
     color: white;
     font-size: 12px;
-    padding: 3px 8px; /* Adjust padding */
+    padding: 3px 8px;
     border-radius: 3px;
     text-transform: uppercase;
 
-    display: inline-block; /* Display as inline block */
+    display: inline-block; 
 }
 
 
@@ -289,7 +292,7 @@ margin-bottom: 20px;
 
 
 
-   /* Media query for smaller screens */
+   
    @media (max-width: 768px) {
     /*--slider----*/
 .slider-container{
@@ -302,12 +305,16 @@ margin-bottom: 20px;
      
         width: 48%;
     }
-    
-.items img{
-  object-fit: contain;
-  max-height: 180px;
-/* border: 1px solid grey; */
-}
+    .items{
+      height: 20%;
+   
+    }
+    .items img{
+    object-fit: contain;
+      height: 180px;
+      
+   
+    }
     .related h2 {
         width: 100%;
         font-size: 15px;
@@ -328,7 +335,7 @@ margin-bottom: 20px;
     .price,
     .del {
         display: block;
-        margin-bottom: 10px; /* Yeh margin aapki requirement ke according adjust karein */
+        margin-bottom: 10px;
     }
    
     .del {
@@ -344,12 +351,12 @@ margin-bottom: 20px;
 .amazon-boxes {
   width: 100%;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    justify-content: space-between; /* Add space between items */
+    flex-wrap: wrap; 
+    justify-content: space-between; 
 }
 
 .amazon-box {
-    flex: 0 0 calc(25% - 10px); /* Set width for four items per line with space between */
+    flex: 0 0 calc(25% - 10px); 
     margin-top: 10px;
     height: 350px;
     background-image: linear-gradient(to right, #ff00ff, #ffff00);
@@ -359,7 +366,7 @@ margin-bottom: 20px;
 }
 
 .amazon-box img {
-    width: 100%; /* Image will take the full width of its container */
+    width: 100%; 
     height: 220px;
     transition: transform 0.3s ease; 
 }
@@ -367,7 +374,7 @@ margin-bottom: 20px;
 
 
 .amazon-box:hover img {
-  transform: scale(1.1); /* Scale up by 10% on hover */
+  transform: scale(1.1);
 }
 .amazon-box p {
   font-size: 13px;
@@ -385,27 +392,14 @@ margin-bottom: 20px;
     transform: translateY(0);
     font-size: 12px;
 }
- /*
-.ribbon {
-  width: 60px; 
-  margin-left: 270px; 
 
-  background-color: #ff00ff; 
-  color: white; 
-  padding: 5px 10px; 
-  transform: rotate(5deg); 
-  transform-origin: left;
-  position: absolute; 
-  z-index: 1;
-}
-*/
 
 
 
 @media only screen and (max-width: 768px) {
     .amazon-box {
       height: 50%;
-        flex-basis: calc(50% - 10px); /* Set width for two items per line on smaller screens */
+        flex-basis: calc(50% - 10px); 
     }
     .amazon-box img {
     width: 100%; 
@@ -426,46 +420,35 @@ margin-bottom: 20px;
   .category-container {
     
     display: flex;
-    overflow-x: scroll; /* Horizontal scroll */
+    overflow-x: scroll;
     padding: 20px;
-    border-bottom: 1px solid #ccc; /* Add border */
+    border-bottom: 1px solid #ccc; 
     border: 1px solid yellow;
     background-color: #fff;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
     width: 100%;
     
 }
-
-
-
- 
-  
-  /* Styling for category item */
 .category-item {
-    margin-right: 1px; /* Adjust spacing between items */
+    margin-right: 1px; 
 }
-
-/* Styling for category item image */
 .category-item img {
-    width: 80px; /* Adjust the image size as needed */
+    width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
 }
-
-/* Media query for smaller screens */
-
-    .category-container {
-        overflow-x: auto; /* Horizontal scroll */
-        justify-content: flex-start; /* Align items to the start */
+.category-container {
+        overflow-x: auto; 
+        justify-content: flex-start; 
     }
 
     .category-item {
-        margin-right: 10px; /* Adjust spacing between items */
+        margin-right: 10px; 
     }
 
     .category-item img {
-        width: 62px; /* Adjust the image size as needed */
+        width: 62px; 
         height: 62px;
     }
 
@@ -499,8 +482,7 @@ margin-bottom: 20px;
         
     
 <!----------Category---------->                 
- <!--<h1>Category To Shoes</h1>-->                      
-                          
+                                            
  <div class="category-container">         
  
             <a href="{% url 'category' %}?category_value=Girls" style="text-decoration: none;">
@@ -667,17 +649,12 @@ margin-bottom: 20px;
        
         </div>
         </div>
-  
-  
-  
-  
-  
-  
+  </div>
+  </div>
+  <!----------SLIDER------------->
 
-  </div>
-  </div>
   <div class="slider-container">
-    <!----------SLIDER------------->
+   
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -711,19 +688,19 @@ margin-bottom: 20px;
       </div>
     <!----------SLIDER CLOSE ------------->
     </div>
+
     <div class="related">
   <h2 style=" 
   background-image: linear-gradient(to right, #ff00ff, #ffff00); text-align: center; ">Top Categories to choose form</h2>
 </div>
+<!----------PRODUCT  DETAILs----------->
 <div class="row">
     {% for p in products %}
       <div class="column">
      
           <div class="items">
         
-            <!--<div class="ribbon">
-              New
-            </div>-->
+          
             <a href="{% url 'productdt' product_id=p.Product_id %}">
               
               <img src="{{p.img1}}" alt="">
@@ -763,14 +740,16 @@ margin-bottom: 20px;
       </script>
       {% endfor %}
       <br>
+
+
+
       <div class="related">
         <h2 style="text-align: center;width: 100%;   background-image: linear-gradient(to right, #ff00ff, #00ffff); padding: 5px;">Brands in this category on Ecommerce</h2>
        <img class="sliding image" src="https://m.media-amazon.com/images/S/aplus-media-library-service-media/ccbe2721-e95f-4563-9dd8-ee24639c27e2.__CR0,0,970,300_PT0_SX970_V1___.png" width="100%"style="fit-content:cover"  alt="">
         <h2 style="  background-image: linear-gradient(to right, #ff00ff, #00ffff);">Brands in this category on  Ecommerce </h2>
           
           
-       
-          <div class="amazon-boxes">
+        <div class="amazon-boxes">
             <div class="amazon-box">
               <img style=" background-image: linear-gradient(to right, #ff00ff, #ffff00);"src="https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/aba1db6f-5b1a-49d3-86ba-cbaa1436576a._CR0,0,1200,628_SX460_QL70_.jpg" alt="" >
         
@@ -807,8 +786,8 @@ margin-bottom: 20px;
         
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
     
 </html>
 {% include 'footer.html' %}
