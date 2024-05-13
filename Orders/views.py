@@ -57,7 +57,7 @@ def homepage(request):
                 'cart_count': cart_count
             }
 
-        return render(request, 'homepage.html', data)
+        return render(request, 'reseller/homepage.html', data)
     
  #   except:
  #       return redirect('/?message=Please login') 
@@ -95,7 +95,7 @@ def login(request):
 
             return render(request, 'login.html',{'error': 'Email id is not registered'})
     else:
-        return render(request, 'login.html',{'error':msg})
+        return render(request, 'reseller/login.html',{'error':msg})
 
 
 def register(request):   
@@ -126,7 +126,7 @@ def register(request):
          #   return HttpResponse("save")
             return redirect('/reseller/otp/verify/')
     else:
-        return render(request, 'register.html')
+        return render(request, 'reseller/register.html')
 
 from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
@@ -155,7 +155,7 @@ def otp_verify(request):
         else:
             return render(request,'otp page.html',{'error': 'invalid otp'})    
 
-    return render(request,'otp page.html')    
+    return render(request,'reseller/otp page.html')    
         
 
 
@@ -164,7 +164,7 @@ from django.contrib.auth import logout
 
 
 def logout(request):
-    try:
+    # try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
@@ -183,13 +183,13 @@ def logout(request):
                     pass 
 
                 return HttpResponse('No user data found to delete.')
-    except:
-            return redirect('/reseller/?message=Please login')
+    # except:
+    #         return redirect('/reseller/?message=Please login')
 
 
 
 def category(request):
-        try:
+        # try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
@@ -211,12 +211,12 @@ def category(request):
                     'cart_count': cart_count,
                 }
         
-            return render(request, 'category_page.html',data)
+            return render(request, 'reseller/category_page.html',data)
 
-        except:
-            return redirect('/reseller/?message=Please login')
+        # except:
+        #     return redirect('/reseller/?message=Please login')
 def search(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         print(user_id)
         user = User.objects.get(user_uid=user_id)
@@ -236,12 +236,12 @@ def search(request):
                     
                     'category': value  # Category ka data context mein add karen
                 }  
-            return render(request, 'category_page.html',data)
+            return render(request, 'reseller/category_page.html',data)
         
-    except:
-            return redirect('/reseller/?message=Please login') 
+    # except:
+    #         return redirect('/reseller/?message=Please login') 
 def category_type(request):
-        try:
+        # try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
@@ -263,9 +263,9 @@ def category_type(request):
                     'category': value  # Category ka data context mein add karen
                 }
         
-            return render(request, 'category_page.html',data)
-        except:
-            return redirect('/reseller/?message=Please login') 
+            return render(request, 'reseller/category_page.html',data)
+        # except:
+        #     return redirect('/reseller/?message=Please login') 
 
 
 # def product_list(request):
@@ -282,7 +282,7 @@ def category_type(request):
 
 
 def productdt(request, product_id):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         print(user_id)
         user = User.objects.get(user_uid=user_id)
@@ -310,9 +310,9 @@ def productdt(request, product_id):
             #  print(all_products )
         
         # Pass the retrieved product details to the template
-        return render(request, 'product page.html', {'get_product': get_product_dt, 'products': all_products, 'cart_count': cart_count,})
-    except:
-        return redirect('/reseller/?message=Please login') 
+        return render(request, 'reseller/product page.html', {'get_product': get_product_dt, 'products': all_products, 'cart_count': cart_count,})
+    # except:
+    #     return redirect('/reseller/?message=Please login') 
 
 
 
@@ -320,7 +320,7 @@ def productdt(request, product_id):
 
 
 def Addcart(request):
-    try:
+    # try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
@@ -412,11 +412,11 @@ def Addcart(request):
         # Pass the product details to the template
       #  return render(request, 'Product page.html', {'product': get_product_dt, 'msg': 'Product is added to cart'})
 
-    except:
-        return redirect('/reseller/?message=Please login') 
+    # except:
+    #     return redirect('/reseller/?message=Please login') 
 
 def cart(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -444,16 +444,16 @@ def cart(request):
             'qty1':qty1
         }
 
-        return render(request,'Shopping Cart.html',data)
-    except:
-       return redirect('/reseller/?message=Please login') 
+        return render(request,'reseller/Shopping Cart.html',data)
+    # except:
+    #    return redirect('/reseller/?message=Please login') 
 
 
 from django.shortcuts import redirect, get_object_or_404
 
 
 def remove_product(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -465,8 +465,8 @@ def remove_product(request):
             remove_id.delete()
             return redirect('/reseller/cart/')
    #return  HttpResponse('remove product')
-    except:
-        return redirect('/reseller/?message=Please login') 
+    # except:
+    #     return redirect('/reseller/?message=Please login') 
 
 
 from django.shortcuts import render
@@ -478,7 +478,7 @@ from django.shortcuts import render, redirect
 #from .models import Order  # Import your Order model
 
 def check_out(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -509,12 +509,12 @@ def check_out(request):
             # Redirect to a confirmation page or any other desired page
      #   return redirect('/confirm_order/')  # Adjust the URL name as needed
              
-        return render(request, 'check_out_page.html',dt)  # Render the checkout page if not POST request
+        return render(request, 'reseller/check_out_page.html',dt)  # Render the checkout page if not POST request
 
     
       #  return render(request, 'check_out page.html')
-    except:
-         return redirect('/reseller/?message=Please login') 
+    # except:
+    #      return redirect('/reseller/?message=Please login') 
 
 
 
@@ -600,7 +600,7 @@ def confirm_order(request):
               
                 # return redirect('/')
 
-        return render(request, 'check_out_page.html')  # Render the confirm order page
+        return render(request, 'reseller/check_out_page.html')  # Render the confirm order page
 
     # except:
         #  return redirect('/')
@@ -608,7 +608,7 @@ def confirm_order(request):
 
 
 def order_detail_page(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         user = User.objects.get(user_uid=user_id)
         lid=request.GET['id'] 
@@ -625,12 +625,12 @@ def order_detail_page(request):
        
       
      
-        return render(request, 'order_detailpage.html', {'orders': orders,'error':'Thank you for shoppiong with us!'})
+        return render(request, 'reseller/order_detailpage.html', {'orders': orders,'error':'Thank you for shoppiong with us!'})
 
     
-    except:
+    # except:
   
-       return redirect('/reseller/')
+    #    return redirect('/reseller/')
     
 
 
@@ -648,11 +648,11 @@ def mypayments(request):
     print(cart_count )
     
   
-    return render(request, 'mypayments.html', {'orders': orders,'cart_count': cart_count,})
+    return render(request, 'reseller/mypayments.html', {'orders': orders,'cart_count': cart_count,})
 
 
 def profile(request):
-    try:
+    # try:
         user_id = request.session.get('user_uid')
         user_data = User.objects.filter(user_uid=user_id)
      
@@ -684,9 +684,9 @@ def profile(request):
             'shipped_order_count': shipped_order_count,
             'canceled_order_count': canceled_order_count
         }
-        return render(request, 'profile.html', data)
-    except:
-        return redirect('/reseller/?message=Please login') 
+        return render(request, 'reseller/profile.html', data)
+    # except:
+    #     return redirect('/reseller/?message=Please login') 
 
 
 def all_orders(request):
@@ -701,7 +701,7 @@ def all_orders(request):
     cart_product = addcart.objects.filter(user_uid=user_id)
     cart_count = cart_product.count()
     print(cart_count )
-    return render(request, 'all_order.html', {'orders': all_orders, 'total_order_count': total_order_count,'cart_count': cart_count,})
+    return render(request, 'reseller/all_order.html', {'orders': all_orders, 'total_order_count': total_order_count,'cart_count': cart_count,})
        
             
 
@@ -718,7 +718,7 @@ def new_orders(request):
     cart_product = addcart.objects.filter(user_uid=user_id)
     cart_count = cart_product.count()
     print(cart_count )
-    return render(request, 'all_order.html', {'orders': new_orders, 'new_order_count': new_order_count,'cart_count': cart_count,})
+    return render(request, 'reseller/all_order.html', {'orders': new_orders, 'new_order_count': new_order_count,'cart_count': cart_count,})
 
 
 def delivered_orders(request):
@@ -733,7 +733,7 @@ def delivered_orders(request):
     cart_product = addcart.objects.filter(user_uid=user_id)
     cart_count = cart_product.count()
     print(cart_count )
-    return render(request, 'all_order.html', {'orders': delivered_orders, 'delivered_order_count': delivered_order_count,'cart_count': cart_count,})
+    return render(request, 'reseller/all_order.html', {'orders': delivered_orders, 'delivered_order_count': delivered_order_count,'cart_count': cart_count,})
 
 
 def shipped_orders(request):
@@ -747,7 +747,7 @@ def shipped_orders(request):
     cart_count = cart_product.count()
     print(cart_count )
     
-    return render(request, 'all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
+    return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
 
 
 
@@ -765,6 +765,6 @@ def cancel_orders(request):
     cart_count = cart_product.count()
     print(cart_count )
     
-    return render(request, 'all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
+    return render(request, 'reseller/all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
 
 
