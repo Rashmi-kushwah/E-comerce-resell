@@ -8,17 +8,7 @@ from CARTPRODUCT.models import addcart
 from Orders.models import Order
 
 
-# test
 
-# def youtube(request):
-#     return render(request,'you tube clone.html')
-
-# def video(request):
-#     return render(request,'Video-play.html')
-# def meesho(request):
-#     return render(request,'meesho.html')
-# def home(request):
-#     return HttpResponse('welcome to homepage')  # Udaharan view function
 '''
 def header(request):
     return render(request,"header.html")  
@@ -767,4 +757,14 @@ def cancel_orders(request):
     
     return render(request, 'reseller/all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
 
+# test
 
+# def youtube(request):
+#     return render(request,'you tube clone.html')
+
+# def video(request):
+#     return render(request,'Video-play.html')
+# def meesho(request):
+#     return render(request,'meesho.html')
+# def home(request):
+#     return HttpResponse('welcome to homepage')  # Udaharan view function
