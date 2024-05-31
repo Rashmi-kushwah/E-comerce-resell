@@ -10,6 +10,7 @@ from django.contrib.auth import logout
 from django.core.paginator import Paginator
 
 
+<<<<<<< HEAD
 from datetime import datetime
 import uuid
 
@@ -21,6 +22,9 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 #from .models import Order  # Import your Order model
 
+=======
+
+>>>>>>> e9aee8372386e4c0b29cea0ce6721898513a1586
 '''
 def header(request):
     return render(request,"header.html")  
@@ -840,12 +844,24 @@ def footer(request):
 # ##############################################
 # test
 
+<<<<<<< HEAD
 # def youtube(request):
 #     return render(request,'you tube clone.html')
 
+=======
+# test
+
+# def youtube(request):
+#     return render(request,'you tube clone.html')
+
+>>>>>>> e9aee8372386e4c0b29cea0ce6721898513a1586
 # def video(request):
 #     return render(request,'Video-play.html')
 # def meesho(request):
 #     return render(request,'meesho.html')
 # def home(request):
+<<<<<<< HEAD
 #     return HttpResponse('welcome to homepage')  # Udaharan view function
+=======
+#     return HttpResponse('welcome to homepage')  # Udaharan view function
+>>>>>>> e9aee8372386e4c0b29cea0ce6721898513a1586

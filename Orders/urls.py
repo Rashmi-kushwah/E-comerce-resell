@@ -51,10 +51,6 @@ urlpatterns = [
     path('delivered_orders/', views.delivered_orders, name='delivered_orders'),
     path('cancel_orders/', views.cancel_orders, name='cancel_orders'),
     path('all_orders/', views.all_orders, name='all_orders'),
-  #  path('order-status/',views.order_status, name='order_status'),
-    # path('youtube/',views.youtube),
-    # path('video/',views.video),
-    # path('meesho/',views.meesho),
     path('mypayments/',views.mypayments),
 
 
