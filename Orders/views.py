@@ -164,18 +164,27 @@ from django.contrib.auth import logout
 
 
 def logout(request):
-    try:
+    # try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
             print(user)
-            if 'user_uid' in request.session:
-                del request.session['user_uid']  # Remove user ID from session
-        
-            return redirect('/reseller/?message=Logged out successfully')
-                  
-    except:
-        return redirect('/reseller/?message=Please login')
+         #  user_id = request.session.get('user_uid')
+         #   print(user_id)
+            if user_id:
+                try:
+                    user = User.objects.get(user_uid=user_id)
+                    print(user)
+                    user.delete()  
+                    del request.session['user_uid']
+                    
+                    return HttpResponse('User data deleted successfully.')
+                except User.DoesNotExist:
+                    pass 
+
+                return HttpResponse('No user data found to delete.')
+    # except:
+    #         return redirect('/reseller/?message=Please login')
 
 
 
