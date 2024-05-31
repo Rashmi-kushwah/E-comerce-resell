@@ -6,62 +6,27 @@ from  ecomUser.models import User
 from PRODUCTDT.models import Productdt
 from CARTPRODUCT.models import addcart
 from Orders.models import Order
+from django.contrib.auth import logout
+from django.core.paginator import Paginator
 
 
-# test
+from datetime import datetime
+import uuid
 
-# def youtube(request):
-#     return render(request,'you tube clone.html')
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from Orders.models import Order
+import uuid
+from datetime import datetime
+from django.shortcuts import render, redirect
+#from .models import Order  # Import your Order model
 
-# def video(request):
-#     return render(request,'Video-play.html')
-# def meesho(request):
-#     return render(request,'meesho.html')
-# def home(request):
-#     return HttpResponse('welcome to homepage')  # Udaharan view function
 '''
 def header(request):
     return render(request,"header.html")  
 '''
-def footer(request):
-    return render(request,"footer.html")  
-def otp(request):
-    return render(request,"otp page.html")
 
-
-def cart_count(request):
-    user_id = request.session.get('user_uid')
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    return render(request, 'header.html', {'cart_count': cart_count})
-    
-
-
-def homepage(request):
-  #  try:
-      
-     #   user = User.objects.get(user_uid=user_id)
-        user_id = request.session.get('user_uid')
-        cart_product = addcart.objects.filter(user_uid=user_id)
-        cart_count = cart_product.count()
-        print(cart_count )
-      
-        
-        
-        all_products = Productdt.objects.all()
-
-        data = {
-            
-                'products': all_products,
-                'cart_count': cart_count
-            }
-
-        return render(request, 'reseller/homepage.html', data)
-    
- #   except:
- #       return redirect('/?message=Please login') 
-   
+###################################### LOGIN  METHOD START ###############################################
    
 def login(request):
     
@@ -97,7 +62,9 @@ def login(request):
     else:
         return render(request, 'reseller/login.html',{'error':msg})
 
+###################################### LOGIN  METHOD CLOSE #################################################
 
+###################################### REGISTER   METHOD START #################################################
 def register(request):   
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -127,6 +94,12 @@ def register(request):
             return redirect('/reseller/otp/verify/')
     else:
         return render(request, 'reseller/register.html')
+
+
+###################################### REGISTER  METHOD CLOSE ###############################################
+
+###################################### SEND OTP METHOD START ################################################
+
 
 from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
@@ -159,130 +132,95 @@ def otp_verify(request):
         
 
 
-        
-from django.contrib.auth import logout
+###################################### SEND OTP METHOD CLOSE ###############################################
 
+######################################  OTP METHOD START ##################################################
+
+
+
+def otp(request):
+    try:
+        user_id = request.session.get('user_uid')
+        print('user_id',user_id)
+        user = User.objects.get(user_uid=user_id)
+        print('user',user)
+
+    except:
+     return redirect('/reseller/?message=Please login') 
+    return render(request,"otp page.html")
+
+
+######################################  OTP METHOD CLOSE ###################################################
+
+###################################### LOGOUT METHOD START #################################################   
+    
 
 def logout(request):
-    # try:
+    try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
             print(user)
          #  user_id = request.session.get('user_uid')
          #   print(user_id)
-            if user_id:
-                try:
-                    user = User.objects.get(user_uid=user_id)
-                    print(user)
-                    user.delete()  
-                    del request.session['user_uid']
-                    
-                    return HttpResponse('User data deleted successfully.')
-                except User.DoesNotExist:
-                    pass 
-
-                return HttpResponse('No user data found to delete.')
-    # except:
-    #         return redirect('/reseller/?message=Please login')
-
-
-
-def category(request):
-        # try:
-            user_id = request.session.get('user_uid')
-            print(user_id)
-            user = User.objects.get(user_uid=user_id)
-            print(user)
+            if 'user_uid' in request.session:
+                del request.session['user_uid']  # Remove user ID from session
         
-            #  if request.method == 'POST':
-            value = request.GET.get('category_value')
-            all_products = Productdt.objects.filter(name__icontains=value)
-            print('data not found',all_products)
-            user_id = request.session.get('user_uid')
-            cart_product = addcart.objects.filter(user_uid=user_id)
-            cart_count = cart_product.count()
-            print(cart_count )
+            return redirect('/reseller/?message=Logged out successfully')
+    except:
+            return redirect('/reseller/?message=Please login')
 
+###################################### LOGOUT METHOD CLOSE ############################################### 
         
-            data={
-                    'products': all_products, 
-                    'category': value  ,# Category ka data context mein add karen
-                    'cart_count': cart_count,
-                }
-        
-            return render(request, 'reseller/category_page.html',data)
-
-        # except:
-        #     return redirect('/reseller/?message=Please login')
-def search(request):
-    # try:
+###################################### HOMEPAGE  METHOD  START ###########################################
+def homepage(request):
+    try:
+      
+     #   user = User.objects.get(user_uid=user_id)
         user_id = request.session.get('user_uid')
-        print(user_id)
-        user = User.objects.get(user_uid=user_id)
-        print(user)
-        if request.method == 'POST':
-            value = request.POST.get('search')
-            print(value)
-            all_products = Productdt.objects.filter(name__icontains=value)
-            print(all_products)
-            cart_product = addcart.objects.filter(user_uid=user_id)
-            cart_count = cart_product.count()
-            print(cart_count )
-
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+      
         
-            data={  'cart_count': cart_count,
-                    'products': all_products, 
-                    
-                    'category': value  # Category ka data context mein add karen
-                }  
-            return render(request, 'reseller/category_page.html',data)
         
-    # except:
-    #         return redirect('/reseller/?message=Please login') 
-def category_type(request):
-        # try:
-            user_id = request.session.get('user_uid')
-            print(user_id)
-            user = User.objects.get(user_uid=user_id)
-            print(user)
-        #  if request.method == 'POST':
-            value = request.GET.get('category_value')
-            all_products = Productdt.objects.filter(Category__icontains=value)
-            print('data not found',all_products)
-            user_id = request.session.get('user_uid')
-            cart_product = addcart.objects.filter(user_uid=user_id)
-            cart_count = cart_product.count()
-            print(cart_count )
+        all_products = Productdt.objects.all()
+        records_per_page = 8
+        paginator = Paginator(all_products, records_per_page)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        total_page = page_obj.paginator.num_pages
+        data = {
+                'products':page_obj,
+                'page_obj':page_obj,
+                'total_pagelist': [n+1 for n in range(total_page)],
+                # 'products': all_products,
+                'cart_count': cart_count
+            }
 
-        
-            data={
-                    'products': all_products, 
-                    'category': value  ,# Category ka data context mein add karen
-                    'cart_count': cart_count,
-                    'category': value  # Category ka data context mein add karen
-                }
-        
-            return render(request, 'reseller/category_page.html',data)
-        # except:
-        #     return redirect('/reseller/?message=Please login') 
-
-
-# def product_list(request):
-#     value = request.GET.get('category')
+        return render(request, 'reseller/homepage.html', data)
     
-#     all_products = Productdt.objects.filter(Category=value)
-#     print('data not found',all_products)
+    except:
+       return redirect('/?message=Please login') 
+###################################### HOMEPAGE  METHOD  CLOSE ###########################################
 
-#     data={
-#              'products': all_products, 
-#                'value':value
-#         }
+###################################### CART COUNT METHOD START ###########################################  
+     
+def cart_count(request):
+    user_id = request.session.get('user_uid')
+    cart_product = addcart.objects.filter(user_uid=user_id)
+    cart_count = cart_product.count()
+    print(cart_count )
+    return render(request, 'header.html', {'cart_count': cart_count})
 
+
+###################################### CART COUNT METHOD CLOSE ##############################################
+
+######################################  PRODUCTDETAIL METHOD START ##########################################  
 
 
 def productdt(request, product_id):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         print(user_id)
         user = User.objects.get(user_uid=user_id)
@@ -311,16 +249,118 @@ def productdt(request, product_id):
         
         # Pass the retrieved product details to the template
         return render(request, 'reseller/product page.html', {'get_product': get_product_dt, 'products': all_products, 'cart_count': cart_count,})
-    # except:
-    #     return redirect('/reseller/?message=Please login') 
+    except:
+       return redirect('/reseller/?message=Please login') 
+
+
+    
+###################################### PRODUCTDETAIL METHOD CLOSE  ################################################
+
+###################################### SEARCH METHOD START ########################################################
+def search(request):
+    try:
+        user_id = request.session.get('user_uid')
+        print(user_id)
+        user = User.objects.get(user_uid=user_id)
+        print(user)
+        if request.method == 'POST':
+            value = request.POST.get('search')
+            print(value)
+            all_products = Productdt.objects.filter(name__icontains=value)
+            print(all_products)
+            cart_product = addcart.objects.filter(user_uid=user_id)
+            cart_count = cart_product.count()
+            print(cart_count )
+
+        
+            data={  'cart_count': cart_count,
+                    'products': all_products, 
+                    
+                    'category': value  # Category ka data context mein add karen
+                }  
+            return render(request, 'reseller/category_page.html',data)
+        
+    except:
+        return redirect('/reseller/?message=Please login') 
+
+##################################### SEARCH METHOD CLOSE ###################################################  
+
+###################################### CATEGORY METHOD  START ###############################################    
+    
+
+
+def category(request):
+        try:
+            user_id = request.session.get('user_uid')
+            print(user_id)
+            user = User.objects.get(user_uid=user_id)
+            print(user)
+        
+            #  if request.method == 'POST':
+            value = request.GET.get('category_value')
+            all_products = Productdt.objects.filter(name__icontains=value)
+            print('data not found',all_products)
+            user_id = request.session.get('user_uid')
+            cart_product = addcart.objects.filter(user_uid=user_id)
+            cart_count = cart_product.count()
+            print(cart_count )
+
+        
+            data={
+                    'products': all_products, 
+                    'category': value  ,# Category ka data context mein add karen
+                    'cart_count': cart_count,
+                }
+        
+            return render(request, 'reseller/category_page.html',data)
+
+        except:
+            return redirect('/reseller/?message=Please login')
+
+
+###################################### CATEGORY METHOD  CLOSE ###############################################  
+        
+######################################  CATEGORY TYPE METHOD START  #########################################            
+
+def category_type(request):
+        try:
+            user_id = request.session.get('user_uid')
+            print(user_id)
+            user = User.objects.get(user_uid=user_id)
+            print(user)
+        #  if request.method == 'POST':
+            value = request.GET.get('category_value')
+            all_products = Productdt.objects.filter(Category__icontains=value)
+            print('data not found',all_products)
+            user_id = request.session.get('user_uid')
+            cart_product = addcart.objects.filter(user_uid=user_id)
+            cart_count = cart_product.count()
+            print(cart_count )
+
+        
+            data={
+                    'products': all_products, 
+                    'category': value  ,# Category ka data context mein add karen
+                    'cart_count': cart_count,
+                    'category': value  # Category ka data context mein add karen
+                }
+        
+            return render(request, 'reseller/category_page.html',data)
+        except:
+            return redirect('/reseller/?message=Please login') 
 
 
 
+
+        
+###################################### CATEGORY METHOD  CLOSE ####################################################         
+    
+###################################### ADDCART METHOD START ####################################################### 
 
 
 
 def Addcart(request):
-    # try:
+    try:
             user_id = request.session.get('user_uid')
             print(user_id)
             user = User.objects.get(user_uid=user_id)
@@ -412,11 +452,14 @@ def Addcart(request):
         # Pass the product details to the template
       #  return render(request, 'Product page.html', {'product': get_product_dt, 'msg': 'Product is added to cart'})
 
-    # except:
-    #     return redirect('/reseller/?message=Please login') 
+    except:
+       return redirect('/reseller/?message=Please login') 
 
+###################################### ADDCART METHOD CLOSE #######################################################     
+    
+###################################### CART METHOD START  #########################################################     
 def cart(request):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -445,15 +488,17 @@ def cart(request):
         }
 
         return render(request,'reseller/Shopping Cart.html',data)
-    # except:
-    #    return redirect('/reseller/?message=Please login') 
+    except:
+      return redirect('/reseller/?message=Please login') 
 
 
 from django.shortcuts import redirect, get_object_or_404
 
+###################################### CART METHOD CLOSE  #########################################################     
 
+###################################### REMOVE PRODUCT METHOD START ################################################  
 def remove_product(request):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -465,20 +510,15 @@ def remove_product(request):
             remove_id.delete()
             return redirect('/reseller/cart/')
    #return  HttpResponse('remove product')
-    # except:
-    #     return redirect('/reseller/?message=Please login') 
+    except:
+       return redirect('/reseller/?message=Please login') 
 
 
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from Orders.models import Order
-import uuid
-from datetime import datetime
-from django.shortcuts import render, redirect
-#from .models import Order  # Import your Order model
+###################################### CART METHOD CLOSE ######################################################### 
 
+###################################### CHECKOUT METHOD  START ####################################################   
 def check_out(request):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
@@ -513,19 +553,14 @@ def check_out(request):
 
     
       #  return render(request, 'check_out page.html')
-    # except:
-    #      return redirect('/reseller/?message=Please login') 
+    except:
+       return redirect('/reseller/?message=Please login') 
 
 
 
-
-from django.shortcuts import render, HttpResponse
-
-from datetime import datetime
-import uuid
 
 def confirm_order(request):
-    # try:
+    try:
       
         user_id = request.session.get('user_uid')
         print('user_id',user_id)
@@ -602,13 +637,15 @@ def confirm_order(request):
 
         return render(request, 'reseller/check_out_page.html')  # Render the confirm order page
 
-    # except:
-        #  return redirect('/')
+    except:
+         return redirect('/reseller/')
 
-
+###################################### CHECKOUT METHOD  CLOSE ####################################################     
+    
+###################################### ORDER DETAIL METHOD  START ###############################################    
 
 def order_detail_page(request):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         user = User.objects.get(user_uid=user_id)
         lid=request.GET['id'] 
@@ -628,31 +665,41 @@ def order_detail_page(request):
         return render(request, 'reseller/order_detailpage.html', {'orders': orders,'error':'Thank you for shoppiong with us!'})
 
     
-    # except:
+    except:
   
-    #    return redirect('/reseller/')
+       return redirect('/reseller/')
     
+###################################### ORDER DETAIL METHOD  CLOSE ############################################### 
 
+###################################### MYPAYMENTS  METHOD  START ################################################  
 
 def mypayments(request):
-    user_id = request.session.get('user_uid')
-    print("User ID:", user_id)
-    user = User.objects.get(user_uid=user_id)
-    
-    # orders = Order.objects.exclude(user_uid=user_id)
-   
-   
-    orders = Order.objects.filter(user_uid=user_id).exclude(reselling_amount=0)
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    
-  
-    return render(request, 'reseller/mypayments.html', {'orders': orders,'cart_count': cart_count,})
-
-
-def profile(request):
     # try:
+        user_id = request.session.get('user_uid')
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
+        
+        # orders = Order.objects.exclude(user_uid=user_id)
+    
+    
+        orders = Order.objects.filter(user_uid=user_id).exclude(reselling_amount=0)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        
+    
+        return render(request, 'reseller/mypayments.html', {'orders': orders,'cart_count': cart_count,})
+
+    # except:
+    #    return redirect('/reseller/?message=Please login') 
+
+
+###################################### MYPAYMENTSMETHOD  CLOSE ###############################################      
+    
+###################################### PROFILE METHOD  START #################################################
+def profile(request):
+    
+    try:
         user_id = request.session.get('user_uid')
         user_data = User.objects.filter(user_uid=user_id)
      
@@ -685,86 +732,120 @@ def profile(request):
             'canceled_order_count': canceled_order_count
         }
         return render(request, 'reseller/profile.html', data)
-    # except:
-    #     return redirect('/reseller/?message=Please login') 
+    except:
+       return redirect('/reseller/?message=Please login') 
+
+###################################### PROFILE METHOD CLOSE  ####################################################      
 
 
+###################################### ALL ORDER METHOD       ##################################################   
 def all_orders(request):
-    user_id = request.session.get('user_uid')
-    print('user_id',user_id)
-    all_orders = Order.objects.all().order_by('-id')
-    print('all_orders',all_orders)
+    try:
+        user_id = request.session.get('user_uid')
+        print('user_id',user_id)
+        all_orders = Order.objects.all().order_by('-id')
+        print('all_orders',all_orders)
+        
     
-  
-    total_order_count = all_orders.count()
-    print('total_order_count:',total_order_count)
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    return render(request, 'reseller/all_order.html', {'orders': all_orders, 'total_order_count': total_order_count,'cart_count': cart_count,})
-       
-            
-
-
+        total_order_count = all_orders.count()
+        print('total_order_count:',total_order_count)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        return render(request, 'reseller/all_order.html', {'orders': all_orders, 'total_order_count': total_order_count,'cart_count': cart_count,})
+        
+                
+    except:
+       return redirect('/reseller/?message=Please login') 
+     
+###################################### NEW ORDER METHOD ############################################### 
 
 def new_orders(request):
+    try:
+        user_id = request.session.get('user_uid')
+        print('user_id', user_id)
+        new_orders = Order.objects.filter(user_uid=user_id, order_status="New").order_by('-id')
+        print('new_orders',new_orders)
+        new_order_count = new_orders.count()
+        print('new_order_count:', new_order_count)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        return render(request, 'reseller/all_order.html', {'orders': new_orders, 'new_order_count': new_order_count,'cart_count': cart_count,})
 
-    user_id = request.session.get('user_uid')
-    print('user_id', user_id)
-    new_orders = Order.objects.filter(user_uid=user_id, order_status="New").order_by('-id')
-    print('new_orders',new_orders)
-    new_order_count = new_orders.count()
-    print('new_order_count:', new_order_count)
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    return render(request, 'reseller/all_order.html', {'orders': new_orders, 'new_order_count': new_order_count,'cart_count': cart_count,})
-
-
+    except:
+       return redirect('/reseller/?message=Please login') 
+###################################### DELIVER ORDER METHOD ###############################################   
 def delivered_orders(request):
+    try:
     
-    user_id = request.session.get('user_uid')
-    print('user_id',user_id)
-    delivered_orders = Order.objects.filter(user_uid=user_id, order_status='delivered').order_by('-id')
-    print('delivered_orders:',delivered_orders)
+        user_id = request.session.get('user_uid')
+        print('user_id',user_id)
+        delivered_orders = Order.objects.filter(user_uid=user_id, order_status='delivered').order_by('-id')
+        print('delivered_orders:',delivered_orders)
+        
+        delivered_order_count = delivered_orders.count()
+        print('delivered_order_count:',delivered_order_count)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        return render(request, 'reseller/all_order.html', {'orders': delivered_orders, 'delivered_order_count': delivered_order_count,'cart_count': cart_count,})
+
+    except:
+       return redirect('/reseller/?message=Please login') 
     
-    delivered_order_count = delivered_orders.count()
-    print('delivered_order_count:',delivered_order_count)
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    return render(request, 'reseller/all_order.html', {'orders': delivered_orders, 'delivered_order_count': delivered_order_count,'cart_count': cart_count,})
-
-
+###################################### SHIPPED ORDER METHOD ###############################################   
+    
 def shipped_orders(request):
-    user_id = request.session.get('user_uid')
-    print('user_id',user_id)
-   
-    shipped_orders = Order.objects.filter(user_uid=user_id, order_status='Shipped').order_by('-id')
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
+    try:
+        user_id = request.session.get('user_uid')
+        print('user_id',user_id)
     
-    return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
+        shipped_orders = Order.objects.filter(user_uid=user_id, order_status='Shipped').order_by('-id')
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        
+        return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
 
+    except:
+       return redirect('/reseller/?message=Please login') 
 
-
+###################################### CANCEL ORDER METHOD ###############################################  
 
 def cancel_orders(request):
+    try:
+        user_id = request.session.get('user_uid')
+        canceled_orders = Order.objects.filter(user_uid=user_id, order_status='Canceled').order_by('-id')
+        print('canceled_orders:',canceled_orders)
+        
 
-    user_id = request.session.get('user_uid')
-    canceled_orders = Order.objects.filter(user_uid=user_id, order_status='Canceled').order_by('-id')
-    print('canceled_orders:',canceled_orders)
-    
+        canceled_order_count = canceled_orders.count()
+        print('canceled_order_count',canceled_order_count)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        
+        return render(request, 'reseller/all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
+    except:
+       return redirect('/reseller/?message=Please login') 
 
-    canceled_order_count = canceled_orders.count()
-    print('canceled_order_count',canceled_order_count)
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    
-    return render(request, 'reseller/all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
+def footer(request):
+    try:
+        return render(request,"footer.html") 
+    except:
+       return redirect('/reseller/?message=Please login') 
+# ##############################################
+# test
 
+# def youtube(request):
+#     return render(request,'you tube clone.html')
 
+# def video(request):
+#     return render(request,'Video-play.html')
+# def meesho(request):
+#     return render(request,'meesho.html')
+# def home(request):
+#     return HttpResponse('welcome to homepage')  # Udaharan view function

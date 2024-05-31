@@ -1,8 +1,7 @@
 
 {% include 'reseller/header.html' %}                                                                                                                        
                                                                                                                                                                                                                                                                                                      
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-      
+       
       <style>
  /*----marquee-------*/
   .marquee {                               
@@ -474,6 +473,92 @@ margin-bottom: 20px;
 
   }    
   
+  /* *********************************** PAGINATOR **************************************** */
+  /* Pagineter */     
+  .pages {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pages span {
+  margin: 10px;
+}
+
+.pages .number-link {
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 50%; /* Makes the links circular */
+  margin: 5px;
+  background-color: #021947; /* Dark blue color */
+  color: white;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  width: 40px; /* Fixed width to ensure circular shape */
+  height: 40px; /* Fixed height to ensure circular shape */
+  line-height: 20px; /* Centers the text vertically */
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.pages .number-link:hover {
+  background-color: #00112e; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly enlarges the link on hover */
+}
+
+.pages .number-link:active {
+  background-color: #000a1c; /* Even darker blue on click */
+}
+
+.pages .text-link {
+  text-decoration: none;
+  padding: 5px 20px;
+  /* border-radius: 5px;  */
+  margin: 5px;
+  background-color: #021947; /* Dark blue color */
+  color: white;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  display: inline-block;
+  transition: background-color 0.2s, transform 0.3s; /* Smooth transition effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for a 3D effect */
+}
+
+.pages .text-link:hover {
+  background-color: #00112e; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly enlarges the link on hover */
+}
+
+.pages .text-link:active {
+  background-color: #000a1c; /* Even darker blue on click */
+}
+
+.slider-container {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+img {
+  width: 100%;
+  height: 350px;
+  margin-top: 5px;
+}
+
    </style>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
        
@@ -741,7 +826,32 @@ margin-bottom: 20px;
       {% endfor %}
       <br>
 
-
+        <!--------------------------------------->
+  <div class="slider-container">
+    <div class="pages">
+      <span>
+        <h5>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</h5>
+      </span>
+      <br>
+      <span>
+        {% if page_obj.has_previous %}
+          <a class="text-link" href="/reseller/homepage/?page=1"><i class="fas fa-angle-double-left"></i> first </a>
+          <a class="text-link" href="/reseller/homepage/?page={{ page_obj.previous_page_number }}"><i class="fas fa-angle-left"></i> previous</a>
+        {% endif %}
+        <span>
+          {% for n in total_pagelist %}
+            <a  class="number-link" href="/reseller/homepage/?page={{ n }}">{{ n }}</a>
+          {% endfor %}
+        </span>
+        {% if page_obj.has_next %}
+          <a class="text-link" href="/reseller/homepage/?page={{ page_obj.next_page_number }}"> next <i class="fas fa-angle-right"></i></a>
+          <a class="text-link" href="/reseller/homepage/?page={{ page_obj.paginator.num_pages }}"> last <i class="fas fa-angle-double-right"></i></a>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+  
+  
 
       <div class="related">
         <h2 style="text-align: center;width: 100%;   background-image: linear-gradient(to right, #ff00ff, #00ffff); padding: 5px;">Brands in this category on Ecommerce</h2>
