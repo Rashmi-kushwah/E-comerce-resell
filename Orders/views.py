@@ -48,11 +48,11 @@ def login(request):
 
             else:
                 print('no check')
-                return render(request, 'login.html', {'error': 'Invalid email or password'})    
+                return render(request, 'reseller/login.html', {'error': 'Invalid email or password'})    
       
         except User.DoesNotExist:
 
-            return render(request, 'login.html',{'error': 'Email id is not registered'})
+            return render(request, 'reseller/login.html',{'error': 'Email id is not registered'})
     else:
         return render(request, 'reseller/login.html',{'error':msg})
 
@@ -68,7 +68,7 @@ def register(request):
         
         try:
             user = User.objects.get(email = email)
-            return render(request, 'register.html', {'error': 'Email address already registered.'})
+            return render(request, 'reseller/register.html', {'error': 'Email address already registered.'})
         
         except :
             otp = send_otp_email(email)
@@ -120,7 +120,7 @@ def otp_verify(request):
             
             return redirect('/reseller/?message=verification successful') 
         else:
-            return render(request,'otp page.html',{'error': 'invalid otp'})    
+            return render(request,'reseller/otp page.html',{'error': 'invalid otp'})    
 
     return render(request,'reseller/otp page.html')    
         
@@ -138,10 +138,13 @@ def otp(request):
         print('user_id',user_id)
         user = User.objects.get(user_uid=user_id)
         print('user',user)
+        
+        return render(request,"reseller/otp page.html")
 
     except:
-     return redirect('/reseller/?message=Please login') 
-    return render(request,"otp page.html")
+        return redirect('/reseller/?message=Please login') 
+    
+
 
 
 ######################################  OTP METHOD CLOSE ###################################################
@@ -161,7 +164,7 @@ def logout(request):
                 del request.session['user_uid']  # Remove user ID from session
         
             return redirect('/reseller/?message=Logged out successfully')
-    except:
+    except User.DoesNotExist:
             return redirect('/reseller/?message=Please login')
 
 ###################################### LOGOUT METHOD CLOSE ############################################### 
@@ -172,6 +175,8 @@ def homepage(request):
       
      #   user = User.objects.get(user_uid=user_id)
         user_id = request.session.get('user_uid')
+        user = User.objects.get(user_uid=user_id)
+        print(user)
         cart_product = addcart.objects.filter(user_uid=user_id)
         cart_count = cart_product.count()
         print(cart_count )
@@ -194,19 +199,24 @@ def homepage(request):
 
         return render(request, 'reseller/homepage.html', data)
     
-    except:
+    except User.DoesNotExist:
        return redirect('/?message=Please login') 
 ###################################### HOMEPAGE  METHOD  CLOSE ###########################################
 
 ###################################### CART COUNT METHOD START ###########################################  
      
 def cart_count(request):
-    user_id = request.session.get('user_uid')
-    cart_product = addcart.objects.filter(user_uid=user_id)
-    cart_count = cart_product.count()
-    print(cart_count )
-    return render(request, 'header.html', {'cart_count': cart_count})
+    try:
 
+        user_id = request.session.get('user_uid')
+        user = User.objects.get(user_uid=user_id)
+        print(user)
+        cart_product = addcart.objects.filter(user_uid=user_id)
+        cart_count = cart_product.count()
+        print(cart_count )
+        return render(request, 'reseller/header.html', {'cart_count': cart_count})
+    except User.DoesNotExist:
+       return redirect('/reseller/?message=Please login') 
 
 ###################################### CART COUNT METHOD CLOSE ##############################################
 
@@ -243,7 +253,7 @@ def productdt(request, product_id):
         
         # Pass the retrieved product details to the template
         return render(request, 'reseller/product page.html', {'get_product': get_product_dt, 'products': all_products, 'cart_count': cart_count,})
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 
 
@@ -274,7 +284,7 @@ def search(request):
                 }  
             return render(request, 'reseller/category_page.html',data)
         
-    except:
+    except User.DoesNotExist:
         return redirect('/reseller/?message=Please login') 
 
 ##################################### SEARCH METHOD CLOSE ###################################################  
@@ -308,7 +318,7 @@ def category(request):
         
             return render(request, 'reseller/category_page.html',data)
 
-        except:
+        except User.DoesNotExist:
             return redirect('/reseller/?message=Please login')
 
 
@@ -340,7 +350,7 @@ def category_type(request):
                 }
         
             return render(request, 'reseller/category_page.html',data)
-        except:
+        except User.DoesNotExist:
             return redirect('/reseller/?message=Please login') 
 
 
@@ -350,7 +360,6 @@ def category_type(request):
 ###################################### CATEGORY METHOD  CLOSE ####################################################         
     
 ###################################### ADDCART METHOD START ####################################################### 
-
 
 
 def Addcart(request):
@@ -401,7 +410,8 @@ def Addcart(request):
                     
                     )
                     cart.save()
-                    return redirect('productdt', product_id=product_id)
+                    
+                    return redirect('product_detail', P_id=product_id)
                 
                 except:
                     add_buy_dt = Productdt.objects.get(Product_id=buy_id)
@@ -446,9 +456,8 @@ def Addcart(request):
         # Pass the product details to the template
       #  return render(request, 'Product page.html', {'product': get_product_dt, 'msg': 'Product is added to cart'})
 
-    except:
-       return redirect('/reseller/?message=Please login') 
-
+    except User.DoesNotExist:
+        return redirect('/reseller/?message=Please login') 
 ###################################### ADDCART METHOD CLOSE #######################################################     
     
 ###################################### CART METHOD START  #########################################################     
@@ -457,7 +466,7 @@ def cart(request):
         user_id = request.session.get('user_uid')
         print(user_id )
         user = User.objects.get(user_uid=user_id)
-
+        print(user)
         
         cart_product = addcart.objects.filter(user_uid=user_id)
     
@@ -504,7 +513,7 @@ def remove_product(request):
             remove_id.delete()
             return redirect('/reseller/cart/')
    #return  HttpResponse('remove product')
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 
 
@@ -547,8 +556,8 @@ def check_out(request):
 
     
       #  return render(request, 'check_out page.html')
-    except:
-       return redirect('/reseller/?message=Please login') 
+    except User.DoesNotExist:
+          return redirect('/reseller/?message=Please login') 
 
 
 
@@ -631,8 +640,8 @@ def confirm_order(request):
 
         return render(request, 'reseller/check_out_page.html')  # Render the confirm order page
 
-    except:
-         return redirect('/reseller/')
+    except User.DoesNotExist:
+        return redirect('/reseller/')
 
 ###################################### CHECKOUT METHOD  CLOSE ####################################################     
     
@@ -659,7 +668,7 @@ def order_detail_page(request):
         return render(request, 'reseller/order_detailpage.html', {'orders': orders,'error':'Thank you for shoppiong with us!'})
 
     
-    except:
+    except User.DoesNotExist:
   
        return redirect('/reseller/')
     
@@ -668,7 +677,7 @@ def order_detail_page(request):
 ###################################### MYPAYMENTS  METHOD  START ################################################  
 
 def mypayments(request):
-    # try:
+    try:
         user_id = request.session.get('user_uid')
         print("User ID:", user_id)
         user = User.objects.get(user_uid=user_id)
@@ -684,8 +693,8 @@ def mypayments(request):
     
         return render(request, 'reseller/mypayments.html', {'orders': orders,'cart_count': cart_count,})
 
-    # except:
-    #    return redirect('/reseller/?message=Please login') 
+    except User.DoesNotExist:
+      return redirect('/reseller/?message=Please login') 
 
 
 ###################################### MYPAYMENTSMETHOD  CLOSE ###############################################      
@@ -695,6 +704,8 @@ def profile(request):
     
     try:
         user_id = request.session.get('user_uid')
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
         user_data = User.objects.filter(user_uid=user_id)
      
         cart_product = addcart.objects.filter(user_uid=user_id)
@@ -726,17 +737,18 @@ def profile(request):
             'canceled_order_count': canceled_order_count
         }
         return render(request, 'reseller/profile.html', data)
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 
 ###################################### PROFILE METHOD CLOSE  ####################################################      
 
 
-###################################### ALL ORDER METHOD       ##################################################   
+###################################### ALL ORDER METHOD  ##################################################   
 def all_orders(request):
     try:
         user_id = request.session.get('user_uid')
-        print('user_id',user_id)
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
         all_orders = Order.objects.all().order_by('-id')
         print('all_orders',all_orders)
         
@@ -749,7 +761,7 @@ def all_orders(request):
         return render(request, 'reseller/all_order.html', {'orders': all_orders, 'total_order_count': total_order_count,'cart_count': cart_count,})
         
                 
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
      
 ###################################### NEW ORDER METHOD ############################################### 
@@ -757,7 +769,8 @@ def all_orders(request):
 def new_orders(request):
     try:
         user_id = request.session.get('user_uid')
-        print('user_id', user_id)
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
         new_orders = Order.objects.filter(user_uid=user_id, order_status="New").order_by('-id')
         print('new_orders',new_orders)
         new_order_count = new_orders.count()
@@ -767,14 +780,15 @@ def new_orders(request):
         print(cart_count )
         return render(request, 'reseller/all_order.html', {'orders': new_orders, 'new_order_count': new_order_count,'cart_count': cart_count,})
 
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 ###################################### DELIVER ORDER METHOD ###############################################   
 def delivered_orders(request):
     try:
     
         user_id = request.session.get('user_uid')
-        print('user_id',user_id)
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
         delivered_orders = Order.objects.filter(user_uid=user_id, order_status='delivered').order_by('-id')
         print('delivered_orders:',delivered_orders)
         
@@ -785,7 +799,7 @@ def delivered_orders(request):
         print(cart_count )
         return render(request, 'reseller/all_order.html', {'orders': delivered_orders, 'delivered_order_count': delivered_order_count,'cart_count': cart_count,})
 
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
     
 ###################################### SHIPPED ORDER METHOD ###############################################   
@@ -793,7 +807,8 @@ def delivered_orders(request):
 def shipped_orders(request):
     try:
         user_id = request.session.get('user_uid')
-        print('user_id',user_id)
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
     
         shipped_orders = Order.objects.filter(user_uid=user_id, order_status='Shipped').order_by('-id')
         cart_product = addcart.objects.filter(user_uid=user_id)
@@ -804,7 +819,7 @@ def shipped_orders(request):
         
         return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
 
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 
 ###################################### CANCEL ORDER METHOD ###############################################  
@@ -812,6 +827,8 @@ def shipped_orders(request):
 def cancel_orders(request):
     try:
         user_id = request.session.get('user_uid')
+        print("User ID:", user_id)
+        user = User.objects.get(user_uid=user_id)
         canceled_orders = Order.objects.filter(user_uid=user_id, order_status='Canceled').order_by('-id')
         print('canceled_orders:',canceled_orders)
         
@@ -823,12 +840,17 @@ def cancel_orders(request):
         print(cart_count )
         
         return render(request, 'reseller/all_order.html', {'orders': canceled_orders, 'canceled_order_count': canceled_order_count})
-    except:
+    except User.DoesNotExist:
        return redirect('/reseller/?message=Please login') 
 
 def footer(request):
     try:
-        return render(request,"footer.html") 
-    except:
-       return redirect('/reseller/?message=Please login') 
-
+        user_id = request.session.get('user_uid')
+        print('user_id', user_id)
+        user = User.objects.get(user_uid=user_id)
+        print('userrrrr', user)
+        return render(request, "reseller/footer.html")  
+    
+    except User.DoesNotExist:
+        return redirect('/reseller/?message=Please login')
+   

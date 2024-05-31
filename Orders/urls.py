@@ -30,17 +30,17 @@ urlpatterns = [
     path('logout/',views.logout,name='logout'),
     path('homepage/',views.homepage),
     path('otp/verify/',views.otp_verify),
-    path('addcart/',views.Addcart),
+    path('addcart/',views.Addcart),#######
     path('cart/',views.cart),
-    path('remove_product/',views.remove_product),
+    path('remove_product/',views.remove_product),#######
     path('check_out/',views.check_out),
     path('confirm_order/',views.confirm_order),
  #   path('header/',views.header),
-    path('footer/',views.footer),
-    path('otp/',views.otp),
-    path('cart_count/',views.cart_count),
+    path('footer/',views.footer),#####
+    path('otp/',views.otp),######
+    path('cart_count/',views.cart_count),#####
     path('profile/',views.profile), 
-    path('search/',views.search),
+    path('search/',views.search),########
     path('order_detail_page/',views.order_detail_page),
     path('category/', views.category , name='category'),
     path('category_type/', views.category_type , name='category_type'),
