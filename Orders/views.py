@@ -803,24 +803,24 @@ def delivered_orders(request):
        return redirect('/reseller/?message=Please login') 
     
 ###################################### SHIPPED ORDER METHOD ###############################################   
-    
+
 def shipped_orders(request):
     try:
         user_id = request.session.get('user_uid')
-        print("User ID:", user_id)
+        print('user_id',user_id)
         user = User.objects.get(user_uid=user_id)
-    
+        print('user',user)
         shipped_orders = Order.objects.filter(user_uid=user_id, order_status='Shipped').order_by('-id')
-        cart_product = addcart.objects.filter(user_uid=user_id)
-        cart_count = cart_product.count()
+        shipped_order_count = shipped_orders.count()
+        print('shipped_order_count:',shipped_order_count)
         cart_product = addcart.objects.filter(user_uid=user_id)
         cart_count = cart_product.count()
         print(cart_count )
-        
-        return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'cart_count': cart_count,'cart_count': cart_count,})
-
-    except User.DoesNotExist:
+        # return HttpResponse('test')
+        return render(request, 'reseller/all_order.html', {'orders': shipped_orders , 'shipped_order_count': shipped_order_count,'cart_count': cart_count,})
+    except:
        return redirect('/reseller/?message=Please login') 
+    
 
 ###################################### CANCEL ORDER METHOD ###############################################  
 
